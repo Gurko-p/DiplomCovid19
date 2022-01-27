@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Employee>
+
+@{ 
+    Layout = null;
+}
+
+<div><h2>Employees</h2></div>
+<div>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>FIO</th>
+            <th>Subdivision</th>
+            <th>Rank</th>
+            <th>Position</th>
+        </tr>
+        @foreach (Employee e in Model)
+        {
+
+            <tr>
+                <td>@e.Id</td>
+                <td>@e.FIO</td>
+                <td>@e.Subdivision.SubdivisionName</td>
+                <td>@e.Rank.RankName</td>
+                <td>@e.Position.PositionName</td>
+            </tr>
+        }
+
+    </table>
+</div>
