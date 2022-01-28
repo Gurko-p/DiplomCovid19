@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiplomCovid19.Migrations
 {
     [DbContext(typeof(EmployeeContext))]
-    [Migration("20220128115127_Initial")]
+    [Migration("20220128203639_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -349,6 +349,23 @@ namespace DiplomCovid19.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vaccine");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            VaccineName = "Спутник V - Росия"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            VaccineName = "SARS-CoV-2 - Китай"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            VaccineName = "Спутник Лайт - Росия"
+                        });
                 });
 
             modelBuilder.Entity("DiplomCovid19.Models.Employee", b =>

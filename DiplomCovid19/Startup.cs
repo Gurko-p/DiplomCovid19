@@ -22,6 +22,7 @@ namespace DiplomCovid19
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddDbContext<EmployeeContext>(options => options
                 .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

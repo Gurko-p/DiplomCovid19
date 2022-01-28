@@ -347,6 +347,23 @@ namespace DiplomCovid19.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vaccine");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            VaccineName = "Спутник V - Росия"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            VaccineName = "SARS-CoV-2 - Китай"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            VaccineName = "Спутник Лайт - Росия"
+                        });
                 });
 
             modelBuilder.Entity("DiplomCovid19.Models.Employee", b =>

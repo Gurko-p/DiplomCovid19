@@ -1,0 +1,55 @@
+﻿@model IEnumerable<EmployeeVaccineJunction>
+
+@{ Layout = "_Layout"; }
+
+<h3 class="p-2 bg-primary text-white text-center">Список пройденных курсов вакцинации сотрудника @(ViewBag.FIO.ToUpper())</h3>
+
+
+<div><h2>Пройденные курсы вакцинации</h2></div>
+
+<div>
+    @if (Model.Count() > 0)
+    {
+
+<div>
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col font-weight-bold">Id</div>
+            <div class="col font-weight-bold">VaccineName</div>
+            <div class="col font-weight-bold">DateFirstComponent</div>
+            <div class="col font-weight-bold">DateSecondComponent</div>
+        </div>
+        @foreach (EmployeeVaccineJunction evj in Model)
+        {
+<div class="row p-2">
+    <input type="hidden" name="EmployeeId" value="@evj.EmployeeId" />
+    <div class="col">@evj.Vaccine.VaccineName</div>
+    <div class="col">@evj.DateFirstComponent</div>
+    <div class="col">@evj.DateSecondComponent</div>
+    <div class="col">
+        <a asp-action="UpdateEmployeeVaccineJunction" asp-route-key="@evj.Id"
+           class="btn btn-outline-primary">
+            Редактировать
+        </a>
+        <form action="DeleteEmployeeVaccineJunction" method="post">
+            <input type="hidden" name="Id" value="@evj.Id" />
+            <button type="submit" class="btn btn-outline-danger">
+                Удалить
+            </button>
+        </form>
+    </div>
+</div>  }
+
+    </div>
+</div> }
+else
+{
+<div><h2>@ViewBag.FIO не вакцинирован!</h2></div>
+}
+</div>
+
+<div class="text-center p-2">
+       <a asp-action="CreateNewCourse" asp-route-key="@ViewBag.EmployeeId"
+       class="btn btn-primary">Создать новый курс вакцинации</a>
+</div>
+

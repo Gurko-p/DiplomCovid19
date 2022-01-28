@@ -59,6 +59,15 @@ namespace DiplomCovid19.Models
                     new Subdivision{ Id = 2, SubdivisionName = "отдел образовательных информационных технологий"},
                     new Subdivision{ Id = 3, SubdivisionName = "учебно-методическое управление"}
                 });
+
+            modelBuilder.Entity<Vaccine>().HasData(
+                new Vaccine[]
+                {
+                    new Vaccine { Id = 1, VaccineName = "Спутник V - Росия"},
+                    new Vaccine { Id = 2, VaccineName = "SARS-CoV-2 - Китай"},
+                    new Vaccine { Id = 3, VaccineName = "Спутник Лайт - Росия"}
+                }
+                );
             modelBuilder.Entity<Employee>().HasData(
                     new Employee[]
                     {
