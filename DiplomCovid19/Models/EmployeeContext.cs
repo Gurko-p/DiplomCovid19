@@ -79,6 +79,11 @@ namespace DiplomCovid19.Models
                         new Employee{ Id = 6, FIO = "Бедункевич Марина Александровна", SubdivisionId = 1, PositionId = 12, RankId = 10 },
                         new Employee{ Id = 7, FIO = "Райкова Екатерина Александровна", SubdivisionId = 3, PositionId = 10, RankId = 10 }
                     });
+
+            modelBuilder.Entity<EmployeeVaccineJunction>()
+                .HasOne(e => e.Employee)
+                .WithMany(e => e.EmployeeVaccines)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -97,10 +97,9 @@ namespace DiplomCovid19.Migrations
                 name: "EmployeeVaccineJunctions",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmployeeId = table.Column<int>(type: "int", nullable: true),
-                    EmployeeId1 = table.Column<long>(type: "bigint", nullable: true),
+                    EmployeeId = table.Column<long>(type: "bigint", nullable: true),
                     VaccineId = table.Column<int>(type: "int", nullable: true),
                     DateFirstComponent = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateSecondComponent = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -109,11 +108,11 @@ namespace DiplomCovid19.Migrations
                 {
                     table.PrimaryKey("PK_EmployeeVaccineJunctions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EmployeeVaccineJunctions_Employees_EmployeeId1",
-                        column: x => x.EmployeeId1,
+                        name: "FK_EmployeeVaccineJunctions_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_EmployeeVaccineJunctions_Vaccine_VaccineId",
                         column: x => x.VaccineId,
@@ -212,9 +211,9 @@ namespace DiplomCovid19.Migrations
                 column: "SubdivisionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeVaccineJunctions_EmployeeId1",
+                name: "IX_EmployeeVaccineJunctions_EmployeeId",
                 table: "EmployeeVaccineJunctions",
-                column: "EmployeeId1");
+                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EmployeeVaccineJunctions_VaccineId",

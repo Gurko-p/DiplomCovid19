@@ -109,9 +109,9 @@ namespace DiplomCovid19.Migrations
 
             modelBuilder.Entity("DiplomCovid19.Models.EmployeeVaccineJunction", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("DateFirstComponent")
@@ -120,10 +120,7 @@ namespace DiplomCovid19.Migrations
                     b.Property<DateTime>("DateSecondComponent")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("EmployeeId1")
+                    b.Property<long?>("EmployeeId")
                         .HasColumnType("bigint");
 
                     b.Property<int?>("VaccineId")
@@ -131,7 +128,7 @@ namespace DiplomCovid19.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId1");
+                    b.HasIndex("EmployeeId");
 
                     b.HasIndex("VaccineId");
 
@@ -391,7 +388,8 @@ namespace DiplomCovid19.Migrations
                 {
                     b.HasOne("DiplomCovid19.Models.Employee", "Employee")
                         .WithMany("EmployeeVaccines")
-                        .HasForeignKey("EmployeeId1");
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("DiplomCovid19.Models.Vaccine", "Vaccine")
                         .WithMany("EmployeeVaccines")
