@@ -101,8 +101,8 @@ namespace DiplomCovid19.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EmployeeId = table.Column<long>(type: "bigint", nullable: true),
                     VaccineId = table.Column<int>(type: "int", nullable: true),
-                    DateFirstComponent = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateSecondComponent = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DateFirstComponent = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DateSecondComponent = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {

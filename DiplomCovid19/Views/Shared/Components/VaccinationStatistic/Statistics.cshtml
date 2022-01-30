@@ -1,0 +1,18 @@
+﻿@model EmployeeViewModel
+
+<div class="statistics">
+    <div class="content">
+        <div>
+            <p>Общее количество сотрудников: <span class="d33">@Model.CountEmployees</span></p>
+        </div>
+        <div>
+            <p>Прошли полный курс вакцинации: 
+            <span class="d33">@Model.FullCourseOfVaccinationCount / @Model.FullCourseOfVaccinationPercent %</span></p>
+        </div>
+        <div>
+            <p>Вакцинированы первым компонентом: 
+                <span class="d33">@Model.VaccinatedFirstComponentCount / @Model.VaccinatedFirstComponentPercent %</span>
+            </p>
+        </div>
+    </div>
+</div>

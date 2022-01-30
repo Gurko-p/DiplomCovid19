@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using DiplomCovid19.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using DiplomCovid19.Models.ViewModels;
 
 namespace DiplomCovid19
 {

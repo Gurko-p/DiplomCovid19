@@ -1,0 +1,44 @@
+﻿.statistics {
+    margin: 1em auto;
+    padding: .5em;
+    background-color: #FFEFD5;
+    border-radius: 1em;
+}
+
+.statistics > .content {
+        margin: auto;
+        padding: 2em;
+    }
+
+.myown-navbar {
+    border-bottom: 1px solid #DCDCDC;
+}
+
+
+.d33 {
+    margin-left: 1em;
+    background: #B5DDD4;
+    position: relative;
+    border-radius: 0.3em;
+    padding: .2em .8em;
+}
+
+    .d33:before {
+        content: "";
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: 100%;
+        top: calc(50% - 5px);
+        border-top: 6px solid transparent;
+        border-right: 12px solid #B5DDD4;
+        border-bottom: 2px solid transparent;
+    }
+
+.exit{
+    margin-right: 2em;
+}
+
+.home{
+
+}

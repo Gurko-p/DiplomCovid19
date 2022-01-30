@@ -19,8 +19,15 @@ using DiplomCovid19.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "D:\diplom\DiplomCovid19\DiplomCovid19\Views\_ViewImports.cshtml"
+using DiplomCovid19.Models.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ee965d64209f4dfc1a5462660d4ab396034ac299", @"/Views/Vaccination/Vaccination.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"23e7f0c69baead4b94dd7a3f34c16af99c8081ab", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8bc884a309c998cd74c319052fd12fe8278199b9", @"/Views/_ViewImports.cshtml")]
     public class Views_Vaccination_Vaccination : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<EmployeeVaccineJunction>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "UpdateEmployeeVaccineJunction", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -133,7 +140,7 @@ WriteAttributeValue("", 886, evj.EmployeeId, 886, 15, false);
 #line hidden
 #nullable disable
             WriteLiteral("</div>\n                        <div class=\"col-2\">\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ee965d64209f4dfc1a5462660d4ab396034ac2998311", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ee965d64209f4dfc1a5462660d4ab396034ac2998495", async() => {
                 WriteLiteral("\n                                Редактировать\n                            ");
             }
             );
@@ -165,7 +172,7 @@ WriteAttributeValue("", 886, evj.EmployeeId, 886, 15, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ee965d64209f4dfc1a5462660d4ab396034ac29910676", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ee965d64209f4dfc1a5462660d4ab396034ac29910860", async() => {
                 WriteLiteral("\n                                <input type=\"hidden\" name=\"Id\"");
                 BeginWriteAttribute("value", " value=\"", 1556, "\"", 1571, 1);
 #nullable restore
@@ -228,7 +235,7 @@ else
 #line hidden
 #nullable disable
             WriteLiteral("</div>\n\n<div class=\"text-center p-2\">\n       ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ee965d64209f4dfc1a5462660d4ab396034ac29913809", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ee965d64209f4dfc1a5462660d4ab396034ac29913993", async() => {
                 WriteLiteral("Создать новый курс вакцинации");
             }
             );

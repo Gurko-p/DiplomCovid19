@@ -17,14 +17,7 @@ namespace DiplomCovid19.Controllers
         {
             IEnumerable<EmployeeVaccineJunction> data = 
                 context.EmployeeVaccineJunctions.Include(v => v.Vaccine).Where(e => e.EmployeeId == employee.Id).ToList();
-            if (!string.IsNullOrEmpty(employee.FIO))
-            {
-                ViewBag.Employee = employee;
-            }
-            else
-            {
                 ViewBag.Employee = context.Employees.Find(employee.Id);
-            }
             return View("Vaccination", data);
         }
 

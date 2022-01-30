@@ -1,52 +1,58 @@
 ﻿@model IEnumerable<Employee>
 
-@{ 
+@{
     Layout = "_Layout";
+    int i = 1;
 }
+<div class="container">
+    @await Component.InvokeAsync("VaccinationStatistic")
+</div>
 
-<div><h2>Employees</h2></div>
-<div>
-    <div class="container-fluid mt-3">
-        <div class="row">
-            <div class="col font-weight-bold">FIO</div>
-            <div class="col font-weight-bold">Subdivision</div>
-            <div class="col font-weight-bold">Rank</div>
-            <div class="col font-weight-bold">Position</div>
-            <div class="col"></div>
-        </div>
+<table class="table table-bordered">
+    <thead>
+        <tr class="text-center">
+            <th scope="col">№ п/п</th>
+            <th scope="col">Фамилия, имя, отчество</th>
+            <th scope="col">Подразделение</th>
+            <th scope="col">Звание</th>
+            <th scope="col">Должность</th>
+            <th colspan="2">Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+
         @foreach (Employee e in Model)
         {
-
-            <div class="row p-2">
-                <div class="col">@e.FIO</div>
-                <div class="col">@e.Subdivision.SubdivisionName</div>
-                <div class="col">@e.Rank.RankName</div>
-                <div class="col">@e.Position.PositionName</div>
-                <div class="col">
+            <tr class="text-center">
+                <th scope="row">@(i++)</th>
+                <td>
+                    <a asp-action="UpdateEmployee" asp-route-key="@e.Id">
+                        @e.FIO
+                    </a>
+                </td>
+                <td>@e.Subdivision.SubdivisionName</td>
+                <td>@e.Rank.RankName</td>
+                <td>@e.Position.PositionName</td>
+                <td>
                     <form asp-action="DeleteEmployee" method="post">
-                        <a asp-action="UpdateEmployee" asp-route-key="@e.Id"
-                           class="btn btn-outline-primary">
-                            Редактировать
-                        </a>
                         <input type="hidden" name="Id" value="@e.Id" />
                         <button type="submit" class="btn btn-outline-danger">
                             Удалить
                         </button>
-
-                    </form>
-                    <form asp-controller="Vaccination" asp-action="VaccinationCourses" method="post">
-                        <input type="hidden" name="Id" value="@e.Id" />
-                        <input type="hidden" name="FIO" value="@e.FIO" />
-                        <button class="btn btn-outline-success">
+                        <a class="btn btn-outline-success"
+                           asp-controller="Vaccination" 
+                           asp-action="VaccinationCourses" 
+                           asp-route-id="@e.Id"
+                           method="post">
                             Курсы вакцинации
-                        </button>
+                        </a>
                     </form>
-                </div>
-            </div>
+                </td>
+            </tr>
         }
-        <div class="text-center p-2">
-            <a asp-action="UpdateEmployee" asp-route-key="0"
-               class="btn btn-primary">Add</a>
-        </div>
-    </div>
+    </tbody>
+</table>
+<div class="text-center p-2">
+    <a asp-action="UpdateEmployee" asp-route-key="0"
+       class="btn btn-primary">Add</a>
 </div>

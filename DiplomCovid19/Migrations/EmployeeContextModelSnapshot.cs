@@ -114,10 +114,10 @@ namespace DiplomCovid19.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateFirstComponent")
+                    b.Property<DateTime?>("DateFirstComponent")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateSecondComponent")
+                    b.Property<DateTime?>("DateSecondComponent")
                         .HasColumnType("datetime2");
 
                     b.Property<long?>("EmployeeId")

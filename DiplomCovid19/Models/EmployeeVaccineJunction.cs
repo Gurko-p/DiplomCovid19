@@ -12,7 +12,7 @@ namespace DiplomCovid19.Models
         public Employee Employee { get; set; }
         public int? VaccineId { get; set; }
         public Vaccine Vaccine { get; set; }
-        public DateTime DateFirstComponent { get; set; }
-        public DateTime DateSecondComponent { get; set; }
+        public DateTime? DateFirstComponent { get; set; }
+        public DateTime? DateSecondComponent { get; set; }
     }
 }

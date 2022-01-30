@@ -225,3 +225,5 @@ D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Shared
 D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Home\UpdateEmployee.cshtml.g.cs
 D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Vaccination\Vaccination.cshtml.g.cs
 D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Vaccination\Create.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\VaccinationStatistic\Statistics.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\bin\Debug\netcoreapp3.1\libman.json

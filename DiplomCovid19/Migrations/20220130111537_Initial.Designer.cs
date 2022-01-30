@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiplomCovid19.Migrations
 {
     [DbContext(typeof(EmployeeContext))]
-    [Migration("20220129154142_Initial")]
+    [Migration("20220130111537_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -116,10 +116,10 @@ namespace DiplomCovid19.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateFirstComponent")
+                    b.Property<DateTime?>("DateFirstComponent")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateSecondComponent")
+                    b.Property<DateTime?>("DateSecondComponent")
                         .HasColumnType("datetime2");
 
                     b.Property<long?>("EmployeeId")
