@@ -118,7 +118,7 @@ namespace DiplomCovid19.Migrations
                         column: x => x.VaccineId,
                         principalTable: "Vaccine",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(

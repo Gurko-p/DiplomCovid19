@@ -24,7 +24,7 @@
         @foreach (Employee e in Model)
         {
             <tr class="text-center">
-                <th scope="row">@(i++)</th>
+                <td scope="row">@(i++)</td>
                 <td>
                     <a asp-action="UpdateEmployee" asp-route-key="@e.Id">
                         @e.FIO
@@ -54,5 +54,5 @@
 </table>
 <div class="text-center p-2">
     <a asp-action="UpdateEmployee" asp-route-key="0"
-       class="btn btn-primary">Add</a>
+       class="btn btn-outline-primary">Добавить сотрудника</a>
 </div>

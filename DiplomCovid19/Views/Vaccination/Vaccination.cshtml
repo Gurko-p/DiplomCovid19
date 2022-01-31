@@ -2,10 +2,7 @@
 
 @{ Layout = "_Layout"; }
 
-<h3 class="p-2 bg-primary text-white text-center">Список пройденных курсов вакцинации сотрудника @(ViewBag.Employee.FIO.ToUpper())</h3>
-
-
-<div><h2>Пройденные курсы вакцинации</h2></div>
+<div class="info-employee-line"><p>Список пройденных курсов вакцинации сотрудника <span class="emp-name">@(ViewBag.Employee.FIO.ToUpper())</span><p></div>
 
 <div>
     @if (Model.Count() > 0)
@@ -27,12 +24,13 @@
                         <div class="col">@evj.DateFirstComponent</div>
                         <div class="col">@evj.DateSecondComponent</div>
                         <div class="col-2">
-                            <a asp-action="UpdateEmployeeVaccineJunction" asp-route-key="@evj.Id"
+                            <a asp-action="UpdateEmployeeVaccineJunction" asp-route-id="@evj.Id"
                                class="btn btn-outline-primary">
                                 Редактировать
                             </a>
-                            <form action="DeleteEmployeeVaccineJunction" method="post">
+                            <form asp-action="DeleteEmployeeVaccineJunction" method="post">
                                 <input type="hidden" name="Id" value="@evj.Id" />
+                                <input type="hidden" name="EmployeeId" value="@evj.EmployeeId" />
                                 <button type="submit" class="btn btn-outline-danger">
                                     Удалить
                                 </button>
@@ -42,7 +40,8 @@
     }
 
     </div>
-</div> }
+</div> 
+    }
 else
 {
 <div><h4>@ViewBag.Employee.FIO не вакцинирован!</h4></div>
@@ -50,7 +49,7 @@ else
 </div>
 
 <div class="text-center p-2">
-       <a asp-action="CreateNewCourse" asp-route-key="@ViewBag.Employee.Id"
+       <a asp-action="CreateNewCourse" asp-route-employeeId="@ViewBag.Employee.Id"
        class="btn btn-primary">Создать новый курс вакцинации</a>
 </div>
 

@@ -84,6 +84,11 @@ namespace DiplomCovid19.Models
                 .HasOne(e => e.Employee)
                 .WithMany(e => e.EmployeeVaccines)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<EmployeeVaccineJunction>()
+                .HasOne(e => e.Vaccine)
+                .WithMany(e => e.EmployeeVaccines)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

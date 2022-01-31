@@ -13,19 +13,19 @@ namespace DiplomCovid19.Controllers
         public EmployeeContext context;
 
         public VaccinationController(EmployeeContext ctx) => context = ctx;
-        public IActionResult VaccinationCourses(Employee employee)
+        public IActionResult VaccinationCourses(long id)
         {
             IEnumerable<EmployeeVaccineJunction> data = 
-                context.EmployeeVaccineJunctions.Include(v => v.Vaccine).Where(e => e.EmployeeId == employee.Id).ToList();
-                ViewBag.Employee = context.Employees.Find(employee.Id);
+                context.EmployeeVaccineJunctions.Include(v => v.Vaccine).Where(e => e.EmployeeId == id).ToList();
+                ViewBag.Employee = context.Employees.Find(id);
             return View("Vaccination", data);
         }
 
-        public IActionResult CreateNewCourse(long key)
+        public IActionResult CreateNewCourse(long employeeId)
         {
-            ViewBag.Employee = context.Employees.Find(key);
+            ViewBag.Employee = context.Employees.Find(employeeId);
             ViewBag.Vaccines = context.Set<Vaccine>();
-            return View("Create", new EmployeeVaccineJunction { EmployeeId = key });
+            return View("Create", new EmployeeVaccineJunction { EmployeeId = employeeId });
         }
 
         [HttpPost]
@@ -39,5 +39,20 @@ namespace DiplomCovid19.Controllers
             }
             return Redirect("~/Home/Index");
         }
+
+        [HttpPost]
+        public IActionResult DeleteEmployeeVaccineJunction(EmployeeVaccineJunction evj)
+        {
+            context.EmployeeVaccineJunctions.Remove(evj);
+            context.SaveChanges();
+
+            return RedirectToAction(nameof(VaccinationCourses), new Employee { Id = Convert.ToInt64(evj.EmployeeId) });
+        }
+
+        public IActionResult UpdateEmployeeVaccineJunction()
+        {
+            return View("Update");
+        }
+
     }
 }

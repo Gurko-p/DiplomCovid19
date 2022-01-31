@@ -393,7 +393,8 @@ namespace DiplomCovid19.Migrations
 
                     b.HasOne("DiplomCovid19.Models.Vaccine", "Vaccine")
                         .WithMany("EmployeeVaccines")
-                        .HasForeignKey("VaccineId");
+                        .HasForeignKey("VaccineId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Employee");
 

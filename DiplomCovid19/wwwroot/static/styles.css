@@ -1,11 +1,32 @@
-﻿.statistics {
+﻿p {
+    margin: 0;
+    padding: 0;
+}
+
+.statistics {
     margin: 1em auto;
     padding: .5em;
     background-color: #FFEFD5;
     border-radius: 1em;
 }
 
-.statistics > .content {
+.info-employee-line {
+    padding: 1em;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #FFEFD5;
+    color: blue;
+    border-radius: 1em;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+    .info-employee-line span {
+        color: crimson;
+        margin-left: .3em;
+    }
+
+    .statistics > .content {
         margin: auto;
         padding: 2em;
     }
