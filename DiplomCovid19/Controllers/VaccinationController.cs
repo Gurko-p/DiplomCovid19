@@ -21,11 +21,11 @@ namespace DiplomCovid19.Controllers
             return View("Vaccination", data);
         }
 
-        public IActionResult CreateNewCourse(long employeeId)
+        public IActionResult CreateNewCourse(Employee emp)
         {
-            ViewBag.Employee = context.Employees.Find(employeeId);
+            ViewBag.Employee = context.Employees.Find(emp.Id);
             ViewBag.Vaccines = context.Set<Vaccine>();
-            return View("Create", new EmployeeVaccineJunction { EmployeeId = employeeId });
+            return View("Create", new EmployeeVaccineJunction { EmployeeId = emp.Id });
         }
 
         [HttpPost]
@@ -45,7 +45,6 @@ namespace DiplomCovid19.Controllers
         {
             context.EmployeeVaccineJunctions.Remove(evj);
             context.SaveChanges();
-
             return RedirectToAction(nameof(VaccinationCourses), new Employee { Id = Convert.ToInt64(evj.EmployeeId) });
         }
 

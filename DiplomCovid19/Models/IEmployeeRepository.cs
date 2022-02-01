@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DiplomCovid19.Models
 {
@@ -10,7 +11,7 @@ namespace DiplomCovid19.Models
         IQueryable<Employee> Employees { get; }
         Employee Get(long id);
         void AddEmployee(Employee employee);
-        void UpdateEmployee(Employee employee);
+        void UpdateEmployee(Employee employee, Employee employeeOriginal = null);
         void DeleteEmployee(Employee employee);
     }
 
@@ -28,9 +29,22 @@ namespace DiplomCovid19.Models
             context.SaveChanges();
         }
 
-        public void UpdateEmployee(Employee employee)
+        public void UpdateEmployee(Employee employee, Employee employeeOriginal = null)
         {
-            context.Employees.Update(employee);
+            if(employeeOriginal == null)
+            {
+                employeeOriginal = context.Employees.Find(employee.Id);
+            }
+            else
+            {
+                context.Employees.Attach(employeeOriginal);
+            }
+            employeeOriginal.Id = employee.Id;
+            employeeOriginal.FIO = employee.FIO;
+            employeeOriginal.SubdivisionId = employee.SubdivisionId;
+            employeeOriginal.RankId = employee.RankId;
+            employeeOriginal.PositionId = employee.PositionId;
+            
             context.SaveChanges();
         }
         public void DeleteEmployee(Employee employee)

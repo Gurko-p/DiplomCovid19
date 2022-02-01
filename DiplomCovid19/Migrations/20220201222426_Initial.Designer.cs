@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiplomCovid19.Migrations
 {
     [DbContext(typeof(EmployeeContext))]
-    [Migration("20220201144407_Initial")]
+    [Migration("20220201222426_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

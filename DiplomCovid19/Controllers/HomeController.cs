@@ -36,7 +36,7 @@ namespace DiplomCovid19.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateEmployee(Employee employee)
+        public IActionResult UpdateEmployee(Employee employee, Employee employeeOriginal = null)
         {
             if (employee.Id == 0)
             {
@@ -44,7 +44,7 @@ namespace DiplomCovid19.Controllers
             }
             else
             {
-                repository.UpdateEmployee(employee);
+                repository.UpdateEmployee(employee, employeeOriginal);
             }
             return RedirectToAction(nameof(Index));
         }
