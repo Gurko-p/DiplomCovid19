@@ -89,6 +89,14 @@ namespace DiplomCovid19.Models
                 .HasOne(e => e.Vaccine)
                 .WithMany(e => e.EmployeeVaccines)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<EmployeeVaccineJunction>()
+                .Property(evj => evj.DateFirstComponent)
+                .HasColumnType("date");
+
+            modelBuilder.Entity<EmployeeVaccineJunction>()
+                .Property(evj => evj.DateSecondComponent)
+                .HasColumnType("date");
         }
     }
 }

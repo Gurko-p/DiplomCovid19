@@ -1,55 +1,61 @@
 ﻿@model IEnumerable<EmployeeVaccineJunction>
 
-@{ Layout = "_Layout"; }
+@{ Layout = "_Layout";
+    int i = 1;
+        }
 
-<div class="info-employee-line"><p>Список пройденных курсов вакцинации сотрудника <span class="emp-name">@(ViewBag.Employee.FIO.ToUpper())</span><p></div>
-
-<div>
-    @if (Model.Count() > 0)
-    {
-
-        <div>
-            <div class="container-fluid mt-3">
-                <div class="row">
-                    <div class="col font-weight-bold">VaccineName</div>
-                    <div class="col font-weight-bold">DateFirstComponent</div>
-                    <div class="col font-weight-bold">DateSecondComponent</div>
-                    <div class="col"></div>
-                </div>
-                @foreach (EmployeeVaccineJunction evj in Model)
-                {
-                    <div class="row p-2">
-                        <input type="hidden" name="EmployeeId" value="@evj.EmployeeId" />
-                        <div class="col">@evj.Vaccine.VaccineName</div>
-                        <div class="col">@evj.DateFirstComponent</div>
-                        <div class="col">@evj.DateSecondComponent</div>
-                        <div class="col-2">
-                            <a asp-action="UpdateEmployeeVaccineJunction" asp-route-id="@evj.Id"
-                               class="btn btn-outline-primary">
-                                Редактировать
-                            </a>
+<div class="my-own-container">
+    <div class="info-employee-line"><p>Список пройденных курсов вакцинации сотрудника <span class="emp-name">@(ViewBag.Employee.FIO.ToUpper())</span><p></div>
+    <div>
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-bordered table-border-radius">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">№ п/п</th>
+                        <th scope="col">Название вакцины</th>
+                        <th scope="col">Дата получения первого компонента</th>
+                        <th scope="col">Дата получения второго компонента</th>
+                        <th scope="col">Действие</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (EmployeeVaccineJunction evj in Model)
+                    {
+                    <tr class="text-center">
+                        @*<td><input type="hidden" name="EmployeeId" value="@evj.EmployeeId" /></td>*@
+                        <td scope="row">@(i++)</td>
+                        <td>@evj.Vaccine.VaccineName</td>
+                        <td>@evj.DateFirstComponent?.ToString("d")</td>
+                        <td>@evj.DateSecondComponent?.ToString("d")</td>
+                        <td>
                             <form asp-action="DeleteEmployeeVaccineJunction" method="post">
+                                <a asp-action="UpdateEmployeeVaccineJunction" asp-route-id="@evj.Id"
+                                   class="btn btn-outline-primary">
+                                    Редактировать
+                                </a>
                                 <input type="hidden" name="Id" value="@evj.Id" />
                                 <input type="hidden" name="EmployeeId" value="@evj.EmployeeId" />
                                 <button type="submit" class="btn btn-outline-danger">
                                     Удалить
                                 </button>
                             </form>
-                        </div>
-                    </div>  
-    }
-
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="vaccine-none"><p>@ViewBag.Employee.FIO не вакцинирован!</p></div>
+        }
     </div>
-</div> 
-    }
-else
-{
-<div><h4>@ViewBag.Employee.FIO не вакцинирован!</h4></div>
-}
+
+    <div class="text-center p-2">
+        <a asp-action="CreateNewCourse" asp-route-employeeId="@ViewBag.Employee.Id"
+           class="btn btn-outline-primary">Создать новый курс вакцинации</a>
+    </div>
 </div>
 
-<div class="text-center p-2">
-       <a asp-action="CreateNewCourse" asp-route-employeeId="@ViewBag.Employee.Id"
-       class="btn btn-primary">Создать новый курс вакцинации</a>
-</div>
 

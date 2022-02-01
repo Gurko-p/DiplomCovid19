@@ -12,27 +12,48 @@
 
 .info-employee-line {
     padding: 1em;
-    width: 80%;
-    margin: 0 auto;
     background-color: #FFEFD5;
     color: blue;
     border-radius: 1em;
     text-align: center;
     font-size: 1.2rem;
+    margin-bottom: .5em;
 }
 
-    .info-employee-line span {
-        color: crimson;
-        margin-left: .3em;
-    }
+.my-own-container {
+    width: 80%;
+    margin: 0 auto;
+}
 
-    .statistics > .content {
-        margin: auto;
-        padding: 2em;
-    }
+.my-own-container-mid {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.info-employee-line span {
+    color: crimson;
+    margin-left: .3em;
+}
+
+.content p {
+    padding: .3em;
+}
+
+.statistics > .content {
+    margin: auto;
+    padding: 2em;
+}
 
 .myown-navbar {
     border-bottom: 1px solid #DCDCDC;
+}
+
+.vaccine-none {
+    color: crimson;
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: bolder;
+    padding: 1.5em;
 }
 
 

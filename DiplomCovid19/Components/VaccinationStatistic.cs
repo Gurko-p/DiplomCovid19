@@ -20,8 +20,6 @@ namespace DiplomCovid19.Components
             double fullCourseOfVaccinationPercent = Math.Round((Convert.ToDouble(fullCourseOfVaccinationCount) / countEmployees * 100), 2);
             long vaccinatedFirstComponentCount = context.EmployeeVaccineJunctions.Where(e => e.DateFirstComponent != null).Distinct().ToList().Count();
             double vaccinatedFirstComponentPercent = Math.Round((Convert.ToDouble(vaccinatedFirstComponentCount) / countEmployees * 100),  2);
-            Console.WriteLine(fullCourseOfVaccinationPercent);
-            Console.WriteLine(vaccinatedFirstComponentPercent);
 
             return View("Statistics", new EmployeeViewModel { 
                 CountEmployees = countEmployees, 
