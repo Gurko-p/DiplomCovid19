@@ -33,11 +33,7 @@ namespace DiplomCovid19.Controllers
         {
             context.EmployeeVaccineJunctions.Add(evj);
             context.SaveChanges();
-            if (evj.VaccineId > 0)
-            {
-                return RedirectToAction(nameof(VaccinationCourses), new Employee { Id = Convert.ToInt64(evj.EmployeeId) });
-            }
-            return Redirect("~/Home/Index");
+            return RedirectToAction(nameof(VaccinationCourses), new Employee { Id = Convert.ToInt64(evj.EmployeeId) });
         }
 
         [HttpPost]
@@ -47,10 +43,17 @@ namespace DiplomCovid19.Controllers
             context.SaveChanges();
             return RedirectToAction(nameof(VaccinationCourses), new Employee { Id = Convert.ToInt64(evj.EmployeeId) });
         }
-
-        public IActionResult UpdateEmployeeVaccineJunction()
+    
+        public IActionResult UpdateEmployeeVaccineJunction(long id)
         {
             return View("Update");
+        }
+        [HttpPost]
+        public IActionResult UpdateEmployeeVaccineJunction(EmployeeVaccineJunction evj)
+        {
+            context.EmployeeVaccineJunctions.Add(evj);
+            context.SaveChanges();
+            return RedirectToAction(nameof(VaccinationCourses), new Employee { Id = Convert.ToInt64(evj.EmployeeId) });
         }
 
     }

@@ -233,3 +233,4 @@ D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\
 D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Vaccination\Create.cshtml.g.cs
 D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Vaccination\Vaccination.cshtml.g.cs
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Vaccination\Update.cshtml.g.cs
