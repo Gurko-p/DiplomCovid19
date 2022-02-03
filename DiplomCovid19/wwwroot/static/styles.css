@@ -81,6 +81,10 @@
     margin-right: 2em;
 }
 
-.home{
+.button-control > .buttons-inline {
+    display: inline-block;
+}
 
+table > tbody tr:hover {
+    background-color: #FFEFD5;
 }

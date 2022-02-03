@@ -1,0 +1,48 @@
+﻿@model EmployeeVaccineJunction
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="my-own-container">
+    <div class="info-employee-line">
+            @(Model.Id == 0 ? "Добавление нового курса вакцинации" : "Редактирование пройденного курса вакцинации") <span class='emp-name'>@(ViewBag.Employee?.FIO ?? "<none>")</span>
+    </div>
+    <div class="my-own-container-mid">
+        <form asp-action="UpdateEmployeeVaccineJunction" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" value="@Model.Id" />
+            <input type="hidden" asp-for="EmployeeId" value="@ViewBag.Employee.Id" />
+            <div class="form-group">
+                <label asp-for="Vaccine.VaccineName"></label>
+                <div><span asp-validation-for="VaccineId" class="text-danger"></span></div>
+                <select class="form-control" asp-for="VaccineId">
+                    @if (Model.VaccineId == null)
+                    {
+                        <option disabled selected>-- Выберете вид вакцины --</option>
+                    }
+                    @foreach (Vaccine v in ViewBag.Vaccines)
+                    {
+                        <option selected=@(Model.Vaccine?.Id == v.Id) value="@v.Id">@v.VaccineName</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateFirstComponent"></label><br />
+                <div><span asp-validation-for="DateFirstComponent" class="text-danger"></span></div>
+                <input class="form-control" asp-for="DateFirstComponent" />
+            </div>
+            <div class="form-group">
+                <label asp-for="DateSecondComponent"></label><br />
+                <div><span asp-validation-for="DateSecondComponent" class="text-danger"></span></div>
+                <input class="form-control" asp-for="DateSecondComponent" />
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary" type="submit">Сохранить</button>
+                <a asp-action="VaccinationCourses" asp-route-id="@ViewBag.Employee.Id" class="btn btn-secondary">Отмена</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+

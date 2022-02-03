@@ -21,21 +21,6 @@ namespace DiplomCovid19.Controllers
             return View("Vaccination", data);
         }
 
-        public IActionResult CreateNewCourse(Employee emp)
-        {
-            ViewBag.Employee = context.Employees.Find(emp.Id);
-            ViewBag.Vaccines = context.Set<Vaccine>();
-            return View("Create", new EmployeeVaccineJunction { EmployeeId = emp.Id });
-        }
-
-        [HttpPost]
-        public IActionResult CreateNewCourse(EmployeeVaccineJunction evj)
-        {
-            context.EmployeeVaccineJunctions.Add(evj);
-            context.SaveChanges();
-            return RedirectToAction(nameof(VaccinationCourses), new Employee { Id = Convert.ToInt64(evj.EmployeeId) });
-        }
-
         [HttpPost]
         public IActionResult DeleteEmployeeVaccineJunction(EmployeeVaccineJunction evj)
         {
@@ -44,15 +29,28 @@ namespace DiplomCovid19.Controllers
             return RedirectToAction(nameof(VaccinationCourses), new Employee { Id = Convert.ToInt64(evj.EmployeeId) });
         }
     
-        public IActionResult UpdateEmployeeVaccineJunction(long id)
+        public IActionResult UpdateEmployeeVaccineJunction(long id, long EmployeeId = 0)
         {
-            return View("Update");
+            if (EmployeeId != 0)
+            {
+                ViewBag.Employee = context.Employees.Find(EmployeeId);
+            }
+            ViewBag.Vaccines = context.Set<Vaccine>();
+            return View("UpdateVaccination", id == 0 ? new EmployeeVaccineJunction { EmployeeId = EmployeeId } : context.EmployeeVaccineJunctions.Find(id));
         }
         [HttpPost]
         public IActionResult UpdateEmployeeVaccineJunction(EmployeeVaccineJunction evj)
         {
-            context.EmployeeVaccineJunctions.Add(evj);
-            context.SaveChanges();
+            if (evj.Id == 0)
+            {
+                context.EmployeeVaccineJunctions.Add(evj);
+                context.SaveChanges();
+            }
+            else
+            {
+                context.EmployeeVaccineJunctions.Update(evj);
+                context.SaveChanges();
+            }
             return RedirectToAction(nameof(VaccinationCourses), new Employee { Id = Convert.ToInt64(evj.EmployeeId) });
         }
 
