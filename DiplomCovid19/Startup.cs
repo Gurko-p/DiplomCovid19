@@ -11,6 +11,7 @@ using DiplomCovid19.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using DiplomCovid19.Models.ViewModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace DiplomCovid19
 {
@@ -23,13 +24,27 @@ namespace DiplomCovid19
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddDbContext<EmployeeContext>(options => options
                 .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<AppIdentityDbContext>(options => options
+                .UseSqlServer(Configuration.GetConnectionString("DiplomCovid19UserIdentity")));
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+
+            services.AddIdentity<AppUser, IdentityRole>(opts =>
+            {
+                opts.Password.RequiredLength = 6;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireUppercase = false;
+                opts.Password.RequireDigit = false;
+            })
+                .AddEntityFrameworkStores<AppIdentityDbContext>()
+                .AddDefaultTokenProviders();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
         }
     }
