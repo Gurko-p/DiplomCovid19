@@ -7,19 +7,19 @@ namespace DiplomCovid19.Models
 
     public class CreateModel
     {
-        [Required]
+        [Required(ErrorMessage = "Пожалуйста, введите имя!")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Пожалуйста, введите email!")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Пожалуйста, введите пароль!")]
         public string Password { get; set; }
     }
     public class LoginModel
     {
-        [Required]
+        [Required(ErrorMessage = "Пожалуйста, введите email!")]
         [UIHint("email")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Пожалуйста, введите пароль!")]
         [UIHint("password")]
         public string Password { get; set; }
     }

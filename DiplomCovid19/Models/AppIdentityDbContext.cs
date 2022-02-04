@@ -17,7 +17,6 @@ namespace DiplomCovid19.Models
         public static async Task CreateAdminAccount(IServiceProvider serviceProvider,
            IConfiguration configuration)
         {
-
             UserManager<AppUser> userManager =
                 serviceProvider.GetRequiredService<UserManager<AppUser>>();
             RoleManager<IdentityRole> roleManager =

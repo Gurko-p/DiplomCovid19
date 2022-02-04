@@ -225,7 +225,6 @@ D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Shared
 D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Home\UpdateEmployee.cshtml.g.cs
 D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Vaccination\Vaccination.cshtml.g.cs
 D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\VaccinationStatistic\Statistics.cshtml.g.cs
-D:\diplom\DiplomCovid19\DiplomCovid19\bin\Debug\netcoreapp3.1\libman.json
 D:\Study\Diplom\DiplomCovid19\DiplomCovid19\bin\Debug\netcoreapp3.1\libman.json
 D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Home\UpdateEmployee.cshtml.g.cs
 D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\VaccinationStatistic\Statistics.cshtml.g.cs
@@ -255,3 +254,14 @@ D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\
 D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\RoleAdmin\Edit.cshtml.g.cs
 D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccessDenied.cshtml.g.cs
 D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index123.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccessDenied.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index123.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\RoleAdmin\Create.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\RoleAdmin\Edit.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\RoleAdmin\Index.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Shared\CssPartial.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Shared\FooterPartial.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Shared\HeaderPartial.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ScriptsPartial.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Account\_LayoutLogin.cshtml.g.cs

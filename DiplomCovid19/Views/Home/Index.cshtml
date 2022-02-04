@@ -40,8 +40,8 @@
                             Удалить
                         </button>
                         <a class="btn btn-outline-success"
-                           asp-controller="Vaccination" 
-                           asp-action="VaccinationCourses" 
+                           asp-controller="Vaccination"
+                           asp-action="VaccinationCourses"
                            asp-route-id="@e.Id"
                            method="post">
                             Курсы вакцинации
@@ -56,3 +56,4 @@
     <a asp-action="UpdateEmployee"
        class="btn btn-outline-primary">Добавить сотрудника</a>
 </div>
+@Html.Partial("FooterPartial", false)
