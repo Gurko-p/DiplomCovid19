@@ -241,3 +241,17 @@ D:\diplom\DiplomCovid19\DiplomCovid19\bin\Debug\netcoreapp3.1\Microsoft.Extensio
 D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Create.cshtml.g.cs
 D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
 D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Edit.cshtml.g.cs
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Create.cshtml.g.cs
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Edit.cshtml.g.cs
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\RoleAdmin\Create.cshtml.g.cs
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\RoleAdmin\Index.cshtml.g.cs
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\RoleAdmin\Edit.cshtml.g.cs
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccessDenied.cshtml.g.cs
+D:\Study\Diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index123.cshtml.g.cs

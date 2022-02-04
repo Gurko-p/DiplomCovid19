@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DiplomCovid19.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DiplomCovid19.Controllers
 {
@@ -17,6 +18,7 @@ namespace DiplomCovid19.Controllers
             repository = repo;
             context = ctx;
         }
+        [Authorize]
         public IActionResult Index()
         {
             IQueryable<Employee> employees = repository.Employees
@@ -26,6 +28,24 @@ namespace DiplomCovid19.Controllers
                 .OrderBy(e => e.FIO);
             return View(employees.ToList());
         }
+
+
+        //[Authorize]
+        //public IActionResult Index() => View(GetData(nameof(Index)));
+
+        //[Authorize(Roles = "Users")]
+        //public IActionResult OtherAction() => View("Index",
+        //    GetData(nameof(OtherAction)));
+
+        //private Dictionary<string, object> GetData(string actionName) =>
+        //    new Dictionary<string, object>
+        //    {
+        //        ["Action"] = actionName,
+        //        ["User"] = HttpContext.User.Identity.Name,
+        //        ["Authenticated"] = HttpContext.User.Identity.IsAuthenticated,
+        //        ["Auth Type"] = HttpContext.User.Identity.AuthenticationType,
+        //        ["In Users Role"] = HttpContext.User.IsInRole("Users")
+        //    };
 
         public IActionResult UpdateEmployee(long key)
         {
