@@ -33,8 +33,15 @@ using DiplomCovid19.Models.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "D:\diplom\DiplomCovid19\DiplomCovid19\Views\_ViewImports.cshtml"
+using DiplomCovid19.Helpers;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"42835ecac43eed06f719f93b71ded871860ae6bb", @"/Views/Account/_LayoutLogin.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0ee4de2f6c69a94a33be677db30bd805d3a33f61", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6346698341d346ea2f7fd7fb3943dd34bdce835c", @"/Views/_ViewImports.cshtml")]
     public class Views_Account__LayoutLogin : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #line hidden
@@ -63,7 +70,7 @@ using DiplomCovid19.Models.ViewModels;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "42835ecac43eed06f719f93b71ded871860ae6bb3442", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "42835ecac43eed06f719f93b71ded871860ae6bb3616", async() => {
                 WriteLiteral("\r\n    <meta name=\"viewport\" content=\"width=device-width\" />\r\n    <title>Авторизация</title>\r\n    ");
 #nullable restore
 #line 6 "D:\diplom\DiplomCovid19\DiplomCovid19\Views\Account\_LayoutLogin.cshtml"
@@ -85,7 +92,7 @@ Write(Html.Partial("CssPartial"));
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "42835ecac43eed06f719f93b71ded871860ae6bb4738", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "42835ecac43eed06f719f93b71ded871860ae6bb4912", async() => {
                 WriteLiteral("\r\n    <div>\r\n        ");
 #nullable restore
 #line 10 "D:\diplom\DiplomCovid19\DiplomCovid19\Views\Account\_LayoutLogin.cshtml"

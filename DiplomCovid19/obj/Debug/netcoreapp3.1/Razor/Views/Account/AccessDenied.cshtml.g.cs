@@ -33,8 +33,15 @@ using DiplomCovid19.Models.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "D:\diplom\DiplomCovid19\DiplomCovid19\Views\_ViewImports.cshtml"
+using DiplomCovid19.Helpers;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5445649c80a36bd18850134d2e60327751b4c55e", @"/Views/Account/AccessDenied.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0ee4de2f6c69a94a33be677db30bd805d3a33f61", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6346698341d346ea2f7fd7fb3943dd34bdce835c", @"/Views/_ViewImports.cshtml")]
     public class Views_Account_AccessDenied : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Index", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -75,7 +82,7 @@ using DiplomCovid19.Models.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("    <div class=\"bg-danger mb-1 p-2 text-white\"><h4>Access Denied</h4></div>\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5445649c80a36bd18850134d2e60327751b4c55e4494", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5445649c80a36bd18850134d2e60327751b4c55e4668", async() => {
                 WriteLiteral("OK");
             }
             );

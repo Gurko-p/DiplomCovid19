@@ -13,4 +13,12 @@ namespace DiplomCovid19.Models.ViewModels
         public long VaccinatedFirstComponentCount { get; set; }
         public double VaccinatedFirstComponentPercent { get; set; }
     }
+
+    public class EmployeeFiterModel
+    {
+        public string FIO { get; set; }
+        public int VaccineId { get; set; }
+        public bool? GotFirstComponent { get; set; }
+        public bool? GotFullCourse { get; set; }
+    }
 }

@@ -8,6 +8,10 @@
     @await Component.InvokeAsync("VaccinationStatistic")
 </div>
 
+    @Html.Partial("FilterPartial", Model);
+
+
+
 <table class="table table-bordered">
     <thead>
         <tr class="text-center">
@@ -16,6 +20,7 @@
             <th scope="col">Подразделение</th>
             <th scope="col">Звание</th>
             <th scope="col">Должность</th>
+            <th scope="col">Количество курсов вакцинации</th>
             <th colspan="2">Действия</th>
         </tr>
     </thead>
@@ -23,32 +28,33 @@
 
         @foreach (Employee e in Model)
         {
-            <tr class="text-center">
-                <td scope="row">@(i++)</td>
-                <td>
-                    <a asp-action="UpdateEmployee" asp-route-key="@e.Id">
-                        @e.FIO
+        <tr class="text-center">
+            <td scope="row">@(i++)</td>
+            <td>
+                <a asp-action="UpdateEmployee" asp-route-key="@e.Id">
+                    @e.FIO
+                </a>
+            </td>
+            <td>@e.Subdivision.SubdivisionName</td>
+            <td>@e.Rank.RankName</td>
+            <td>@e.Position.PositionName</td>
+            <td>@e.CountCourseVaccination</td>
+            <td>
+                <form asp-action="DeleteEmployee" method="post">
+                    <input type="hidden" name="Id" value="@e.Id" />
+                    <button type="submit" class="btn btn-outline-danger">
+                        Удалить
+                    </button>
+                    <a class="btn btn-outline-success"
+                       asp-controller="Vaccination"
+                       asp-action="VaccinationCourses"
+                       asp-route-id="@e.Id"
+                       method="post">
+                        Курсы вакцинации
                     </a>
-                </td>
-                <td>@e.Subdivision.SubdivisionName</td>
-                <td>@e.Rank.RankName</td>
-                <td>@e.Position.PositionName</td>
-                <td>
-                    <form asp-action="DeleteEmployee" method="post">
-                        <input type="hidden" name="Id" value="@e.Id" />
-                        <button type="submit" class="btn btn-outline-danger">
-                            Удалить
-                        </button>
-                        <a class="btn btn-outline-success"
-                           asp-controller="Vaccination"
-                           asp-action="VaccinationCourses"
-                           asp-route-id="@e.Id"
-                           method="post">
-                            Курсы вакцинации
-                        </a>
-                    </form>
-                </td>
-            </tr>
+                </form>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
@@ -56,4 +62,3 @@
     <a asp-action="UpdateEmployee"
        class="btn btn-outline-primary">Добавить сотрудника</a>
 </div>
-@Html.Partial("FooterPartial", false)

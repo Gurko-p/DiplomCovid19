@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiplomCovid19.Migrations
 {
     [DbContext(typeof(EmployeeContext))]
-    [Migration("20220201222426_Initial")]
+    [Migration("20220205160612_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,16 +28,23 @@ namespace DiplomCovid19.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<long>("CountCourseVaccination")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("FIO")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("PositionId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("RankId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("SubdivisionId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -54,6 +61,7 @@ namespace DiplomCovid19.Migrations
                         new
                         {
                             Id = 1L,
+                            CountCourseVaccination = 0L,
                             FIO = "Гурко Павел Михайлович",
                             PositionId = 8,
                             RankId = 9,
@@ -62,6 +70,7 @@ namespace DiplomCovid19.Migrations
                         new
                         {
                             Id = 2L,
+                            CountCourseVaccination = 0L,
                             FIO = "Левенко Евгений Юрьевич",
                             PositionId = 10,
                             RankId = 10,
@@ -70,6 +79,7 @@ namespace DiplomCovid19.Migrations
                         new
                         {
                             Id = 3L,
+                            CountCourseVaccination = 0L,
                             FIO = "Гуркский Вадим Михайлович",
                             PositionId = 10,
                             RankId = 10,
@@ -78,6 +88,7 @@ namespace DiplomCovid19.Migrations
                         new
                         {
                             Id = 4L,
+                            CountCourseVaccination = 0L,
                             FIO = "Гейц Людмила Николаевна",
                             PositionId = 11,
                             RankId = 8,
@@ -86,6 +97,7 @@ namespace DiplomCovid19.Migrations
                         new
                         {
                             Id = 5L,
+                            CountCourseVaccination = 0L,
                             FIO = "Костян Елена Григорьевна",
                             PositionId = 11,
                             RankId = 8,
@@ -94,6 +106,7 @@ namespace DiplomCovid19.Migrations
                         new
                         {
                             Id = 6L,
+                            CountCourseVaccination = 0L,
                             FIO = "Бедункевич Марина Александровна",
                             PositionId = 12,
                             RankId = 10,
@@ -102,6 +115,7 @@ namespace DiplomCovid19.Migrations
                         new
                         {
                             Id = 7L,
+                            CountCourseVaccination = 0L,
                             FIO = "Райкова Екатерина Александровна",
                             PositionId = 10,
                             RankId = 10,
@@ -117,6 +131,7 @@ namespace DiplomCovid19.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime?>("DateFirstComponent")
+                        .IsRequired()
                         .HasColumnType("date");
 
                     b.Property<DateTime?>("DateSecondComponent")
@@ -126,6 +141,7 @@ namespace DiplomCovid19.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<int?>("VaccineId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -345,7 +361,7 @@ namespace DiplomCovid19.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vaccine");
+                    b.ToTable("Vaccines");
 
                     b.HasData(
                         new
@@ -369,15 +385,21 @@ namespace DiplomCovid19.Migrations
                 {
                     b.HasOne("DiplomCovid19.Models.Position", "Position")
                         .WithMany()
-                        .HasForeignKey("PositionId");
+                        .HasForeignKey("PositionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DiplomCovid19.Models.Rank", "Rank")
                         .WithMany()
-                        .HasForeignKey("RankId");
+                        .HasForeignKey("RankId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DiplomCovid19.Models.Subdivision", "Subdivision")
                         .WithMany("Employees")
-                        .HasForeignKey("SubdivisionId");
+                        .HasForeignKey("SubdivisionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Position");
 
@@ -396,7 +418,8 @@ namespace DiplomCovid19.Migrations
                     b.HasOne("DiplomCovid19.Models.Vaccine", "Vaccine")
                         .WithMany("EmployeeVaccines")
                         .HasForeignKey("VaccineId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Employee");
 

@@ -25,6 +25,8 @@ namespace DiplomCovid19.Models
         [Required(ErrorMessage = "Значение по умолчанию не допускается!")]
         public int? PositionId { get; set; }
         public Position Position { get; set; }
+
+        public long CountCourseVaccination { get; set; } = 0;
         public IEnumerable<EmployeeVaccineJunction> EmployeeVaccines { get; set; }
 
     }

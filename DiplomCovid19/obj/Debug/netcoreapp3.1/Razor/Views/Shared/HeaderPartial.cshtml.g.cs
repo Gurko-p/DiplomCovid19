@@ -33,8 +33,15 @@ using DiplomCovid19.Models.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "D:\diplom\DiplomCovid19\DiplomCovid19\Views\_ViewImports.cshtml"
+using DiplomCovid19.Helpers;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4467706a5e3219373255674a76b177f1f09af951", @"/Views/Shared/HeaderPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0ee4de2f6c69a94a33be677db30bd805d3a33f61", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6346698341d346ea2f7fd7fb3943dd34bdce835c", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_HeaderPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("navbar-brand"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -71,7 +78,7 @@ using DiplomCovid19.Models.ViewModels;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<nav class=\"navbar navbar-expand-lg navbar-light bg-light myown-navbar\">\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4467706a5e3219373255674a76b177f1f09af9515903", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4467706a5e3219373255674a76b177f1f09af9516077", async() => {
                 WriteLiteral("Covid19");
             }
             );
@@ -98,7 +105,7 @@ using DiplomCovid19.Models.ViewModels;
         <ul class=""navbar-nav mr-auto"">
             <li class=""nav-item active"">
                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4467706a5e3219373255674a76b177f1f09af9517814", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4467706a5e3219373255674a76b177f1f09af9517988", async() => {
                 WriteLiteral("Главная <span class=\"sr-only\">(current)</span>");
             }
             );
@@ -117,9 +124,9 @@ using DiplomCovid19.Models.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n            </li>\r\n        </ul>\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4467706a5e3219373255674a76b177f1f09af9519346", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4467706a5e3219373255674a76b177f1f09af9519520", async() => {
                 WriteLiteral("\r\n            <div class=\"exit\">\r\n                <ul class=\"navbar-nav mr-auto\">\r\n                    <li class=\"nav-item active\">\r\n                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4467706a5e3219373255674a76b177f1f09af9519771", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4467706a5e3219373255674a76b177f1f09af9519945", async() => {
                     WriteLiteral("Выйти <span class=\"sr-only\">(current)</span>");
                 }
                 );

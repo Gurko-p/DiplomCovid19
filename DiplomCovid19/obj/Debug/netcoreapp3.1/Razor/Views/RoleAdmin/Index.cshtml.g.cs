@@ -33,8 +33,15 @@ using DiplomCovid19.Models.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "D:\diplom\DiplomCovid19\DiplomCovid19\Views\_ViewImports.cshtml"
+using DiplomCovid19.Helpers;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6db5a8256a4887626fd85cea9ecdb9e1c19e04bc", @"/Views/RoleAdmin/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0ee4de2f6c69a94a33be677db30bd805d3a33f61", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6346698341d346ea2f7fd7fb3943dd34bdce835c", @"/Views/_ViewImports.cshtml")]
     public class Views_RoleAdmin_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<IdentityRole>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("text-danger"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -81,7 +88,7 @@ using DiplomCovid19.Models.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<div class=\"bg-primary m-1 p-1\"><h4>Roles</h4></div>\r\n\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6db5a8256a4887626fd85cea9ecdb9e1c19e04bc6341", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("div", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6db5a8256a4887626fd85cea9ecdb9e1c19e04bc6515", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationSummaryTagHelper>();
@@ -140,7 +147,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper.ValidationSumma
 #line hidden
 #nullable disable
             WriteLiteral("</td>\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("td", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6db5a8256a4887626fd85cea9ecdb9e1c19e04bc9127", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("td", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6db5a8256a4887626fd85cea9ecdb9e1c19e04bc9301", async() => {
             }
             );
             __DiplomCovid19_Helpers_RoleUsersTagHelper = CreateTagHelper<global::DiplomCovid19.Helpers.RoleUsersTagHelper>();
@@ -164,9 +171,9 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper.ValidationSumma
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                <td>\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6db5a8256a4887626fd85cea9ecdb9e1c19e04bc10672", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6db5a8256a4887626fd85cea9ecdb9e1c19e04bc10846", async() => {
                 WriteLiteral("\r\n                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6db5a8256a4887626fd85cea9ecdb9e1c19e04bc10955", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6db5a8256a4887626fd85cea9ecdb9e1c19e04bc11129", async() => {
                     WriteLiteral("Edit");
                 }
                 );
@@ -240,7 +247,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationSummaryTagHelper.ValidationSumma
 #line hidden
 #nullable disable
             WriteLiteral("</table>\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6db5a8256a4887626fd85cea9ecdb9e1c19e04bc16087", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6db5a8256a4887626fd85cea9ecdb9e1c19e04bc16261", async() => {
                 WriteLiteral("Create");
             }
             );

@@ -33,8 +33,15 @@ using DiplomCovid19.Models.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "D:\diplom\DiplomCovid19\DiplomCovid19\Views\_ViewImports.cshtml"
+using DiplomCovid19.Helpers;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a87ea38bd8cc45f02d795d2edcddacd7df206272", @"/Views/Home/Index123.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0ee4de2f6c69a94a33be677db30bd805d3a33f61", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6346698341d346ea2f7fd7fb3943dd34bdce835c", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Index123 : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Dictionary<string, object>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Account", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -114,7 +121,7 @@ using DiplomCovid19.Models.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a87ea38bd8cc45f02d795d2edcddacd7df2062725693", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a87ea38bd8cc45f02d795d2edcddacd7df2062725867", async() => {
                 WriteLiteral("Logout");
             }
             );

@@ -15,6 +15,7 @@ namespace DiplomCovid19.Controllers
         public VaccinationController(EmployeeContext ctx) => context = ctx;
         public IActionResult VaccinationCourses(long id)
         {
+
             IEnumerable<EmployeeVaccineJunction> data = 
                 context.EmployeeVaccineJunctions.Include(v => v.Vaccine).Where(e => e.EmployeeId == id).ToList();
                 ViewBag.Employee = context.Employees.Find(id);
@@ -54,5 +55,10 @@ namespace DiplomCovid19.Controllers
             return RedirectToAction(nameof(VaccinationCourses), new Employee { Id = Convert.ToInt64(evj.EmployeeId) });
         }
 
+        public IActionResult BackToHomeIndex(string returnUrl)
+        {   
+
+            return Redirect($"~{returnUrl}");
+        }
     }
 }

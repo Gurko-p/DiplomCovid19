@@ -13,6 +13,7 @@ namespace DiplomCovid19.Models
         public DbSet<Position> Positions { get; set; }
         public DbSet<Rank> Ranks { get; set; }
         public DbSet<Subdivision> Subdivisions { get; set; }
+        public DbSet<Vaccine> Vaccines { get; set; }
         public DbSet<EmployeeVaccineJunction> EmployeeVaccineJunctions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

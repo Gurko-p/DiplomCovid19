@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Employee>
+
+<div class="my-own-container">
+    <div class="my-own-container-mid">
+        <form asp-action="Index" method="get">
+            <input type="text" name="fio" value="@ViewBag.EmployeeFiterModel.FIO" class="form-group" />
+            <div class="form-group">
+                <select class="form-control" name="vaccineId">
+                    @if (ViewBag.EmployeeFiterModel?.VaccineId == 0)
+                    {
+                        <option disabled selected name="vaccineId" value="@ViewBag.EmployeeFiterModel?.VaccineId">-- Выберете вид вакцины --</option>
+                    }
+                    @foreach (Vaccine v in ViewBag.Vaccines)
+                    {
+                        <option selected=@(ViewBag.EmployeeFiterModel?.VaccineId == v.Id) name="vaccineId" value="@v.Id">@v.VaccineName</option>
+                    }
+                </select>
+            </div>
+            <div><input type="checkbox" name="got1comp" value="true" checked=@(ViewBag.EmployeeFiterModel?.GotFirstComponent) /><span>Получили первый компонент</span></div>
+            <div><input type="checkbox" name="gotFullCourse" value="true" checked=@(ViewBag.EmployeeFiterModel?.GotFullCourse) /><span>Прошли полный курс вакцинации</span></div>
+            <div class="text-center">
+                <button class="btn btn-primary" type="submit">Фильтр</button>
+            </div>
+            <a class="btn btn-secondary" asp-action="ClearFilters">Очистить фильтры</a>
+        </form>
+    </div>
+</div>

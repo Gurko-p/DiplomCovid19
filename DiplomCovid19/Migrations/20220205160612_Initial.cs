@@ -47,7 +47,7 @@ namespace DiplomCovid19.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Vaccine",
+                name: "Vaccines",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -56,7 +56,7 @@ namespace DiplomCovid19.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Vaccine", x => x.Id);
+                    table.PrimaryKey("PK_Vaccines", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -65,10 +65,11 @@ namespace DiplomCovid19.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FIO = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SubdivisionId = table.Column<int>(type: "int", nullable: true),
-                    RankId = table.Column<int>(type: "int", nullable: true),
-                    PositionId = table.Column<int>(type: "int", nullable: true)
+                    FIO = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SubdivisionId = table.Column<int>(type: "int", nullable: false),
+                    RankId = table.Column<int>(type: "int", nullable: false),
+                    PositionId = table.Column<int>(type: "int", nullable: false),
+                    CountCourseVaccination = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -78,19 +79,19 @@ namespace DiplomCovid19.Migrations
                         column: x => x.PositionId,
                         principalTable: "Positions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Employees_Ranks_RankId",
                         column: x => x.RankId,
                         principalTable: "Ranks",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Employees_Subdivisions_SubdivisionId",
                         column: x => x.SubdivisionId,
                         principalTable: "Subdivisions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -100,8 +101,8 @@ namespace DiplomCovid19.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EmployeeId = table.Column<long>(type: "bigint", nullable: true),
-                    VaccineId = table.Column<int>(type: "int", nullable: true),
-                    DateFirstComponent = table.Column<DateTime>(type: "date", nullable: true),
+                    VaccineId = table.Column<int>(type: "int", nullable: false),
+                    DateFirstComponent = table.Column<DateTime>(type: "date", nullable: false),
                     DateSecondComponent = table.Column<DateTime>(type: "date", nullable: true)
                 },
                 constraints: table =>
@@ -114,9 +115,9 @@ namespace DiplomCovid19.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EmployeeVaccineJunctions_Vaccine_VaccineId",
+                        name: "FK_EmployeeVaccineJunctions_Vaccines_VaccineId",
                         column: x => x.VaccineId,
-                        principalTable: "Vaccine",
+                        principalTable: "Vaccines",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -172,7 +173,7 @@ namespace DiplomCovid19.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Vaccine",
+                table: "Vaccines",
                 columns: new[] { "Id", "VaccineName" },
                 values: new object[,]
                 {
@@ -183,16 +184,16 @@ namespace DiplomCovid19.Migrations
 
             migrationBuilder.InsertData(
                 table: "Employees",
-                columns: new[] { "Id", "FIO", "PositionId", "RankId", "SubdivisionId" },
+                columns: new[] { "Id", "CountCourseVaccination", "FIO", "PositionId", "RankId", "SubdivisionId" },
                 values: new object[,]
                 {
-                    { 4L, "Гейц Людмила Николаевна", 11, 8, 1 },
-                    { 5L, "Костян Елена Григорьевна", 11, 8, 1 },
-                    { 6L, "Бедункевич Марина Александровна", 12, 10, 1 },
-                    { 1L, "Гурко Павел Михайлович", 8, 9, 2 },
-                    { 2L, "Левенко Евгений Юрьевич", 10, 10, 2 },
-                    { 3L, "Гуркский Вадим Михайлович", 10, 10, 2 },
-                    { 7L, "Райкова Екатерина Александровна", 10, 10, 3 }
+                    { 4L, 0L, "Гейц Людмила Николаевна", 11, 8, 1 },
+                    { 5L, 0L, "Костян Елена Григорьевна", 11, 8, 1 },
+                    { 6L, 0L, "Бедункевич Марина Александровна", 12, 10, 1 },
+                    { 1L, 0L, "Гурко Павел Михайлович", 8, 9, 2 },
+                    { 2L, 0L, "Левенко Евгений Юрьевич", 10, 10, 2 },
+                    { 3L, 0L, "Гуркский Вадим Михайлович", 10, 10, 2 },
+                    { 7L, 0L, "Райкова Екатерина Александровна", 10, 10, 3 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -230,7 +231,7 @@ namespace DiplomCovid19.Migrations
                 name: "Employees");
 
             migrationBuilder.DropTable(
-                name: "Vaccine");
+                name: "Vaccines");
 
             migrationBuilder.DropTable(
                 name: "Positions");

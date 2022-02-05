@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using DiplomCovid19.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using DiplomCovid19.Helpers;
+using DiplomCovid19.Models.ViewModels;
 
 namespace DiplomCovid19.Controllers
 {
@@ -18,34 +21,65 @@ namespace DiplomCovid19.Controllers
             repository = repo;
             context = ctx;
         }
-        [Authorize]
-        public IActionResult Index()
+        //[Authorize]
+        public IActionResult Index(string fio = null, int vaccineId = 0, bool got1comp = false, bool gotFullCourse = false)
         {
-            IQueryable<Employee> employees = repository.Employees
+            ViewBag.Vaccines = context.Set<Vaccine>();
+            string returnUrl = UrlExtensions.PathAndQuery(HttpContext.Request);
+            HttpContext.Session.SetString("returnUrl", returnUrl);
+
+            ViewBag.EmployeeFiterModel = new EmployeeFiterModel 
+            { 
+                 FIO = fio,
+                 VaccineId = vaccineId,
+                 GotFirstComponent = got1comp,
+                 GotFullCourse = gotFullCourse
+            };
+
+            IEnumerable<Employee> employees = repository.Employees
                 .Include(e => e.Subdivision)
                 .Include(e => e.Rank)
                 .Include(e => e.Position)
-                .OrderBy(e => e.FIO);
-            return View(employees.ToList());
+                .Where(e => e.FIO.Contains(fio ?? ""))
+                .ToList();
+
+            IEnumerable<Employee> empFiltered = null;
+            if (got1comp != false && gotFullCourse == false)
+            {
+                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+                empFiltered = from emp in employees
+                              join evj in empVacJunc on emp.Id equals evj.EmployeeId
+                              where evj.DateFirstComponent.HasValue
+                              select emp;
+            }
+            else if (gotFullCourse != false)
+            {
+                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+                empFiltered = from emp in employees
+                              join evj in empVacJunc on emp.Id equals evj.EmployeeId
+                              where evj.DateSecondComponent.HasValue
+                              select emp;
+            }
+            else if (vaccineId != 0)
+            {
+                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+                empFiltered = from emp in employees
+                              join evj in empVacJunc on emp.Id equals evj.EmployeeId
+                              where evj.VaccineId == vaccineId
+                              select emp;
+            }
+            else
+            {
+                empFiltered = employees;
+            }
+            return View(empFiltered?.Distinct().ToList());
         }
 
-
-        //[Authorize]
-        //public IActionResult Index() => View(GetData(nameof(Index)));
-
-        //[Authorize(Roles = "Users")]
-        //public IActionResult OtherAction() => View("Index",
-        //    GetData(nameof(OtherAction)));
-
-        //private Dictionary<string, object> GetData(string actionName) =>
-        //    new Dictionary<string, object>
-        //    {
-        //        ["Action"] = actionName,
-        //        ["User"] = HttpContext.User.Identity.Name,
-        //        ["Authenticated"] = HttpContext.User.Identity.IsAuthenticated,
-        //        ["Auth Type"] = HttpContext.User.Identity.AuthenticationType,
-        //        ["In Users Role"] = HttpContext.User.IsInRole("Users")
-        //    };
+        public IActionResult ClearFilters()
+        {
+            HttpContext.Session.Remove("returnUrl");
+            return RedirectToAction("Index");
+        }
 
         public IActionResult UpdateEmployee(long key)
         {

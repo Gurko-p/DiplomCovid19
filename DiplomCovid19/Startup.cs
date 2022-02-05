@@ -38,6 +38,8 @@ namespace DiplomCovid19
             })
                 .AddEntityFrameworkStores<AppIdentityDbContext>()
                 .AddDefaultTokenProviders();
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -45,6 +47,7 @@ namespace DiplomCovid19
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseAuthentication();
+            app.UseSession();
             app.UseMvcWithDefaultRoute();
             AppIdentityDbContext.CreateAdminAccount(app.ApplicationServices, Configuration).Wait();
         }

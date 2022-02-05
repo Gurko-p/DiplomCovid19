@@ -4,6 +4,9 @@
     int i = 1;
         }
 
+
+
+
 <div class="my-own-container">
     <div class="info-employee-line"><p>Список пройденных курсов вакцинации сотрудника <span class="emp-name">@(ViewBag.Employee.FIO.ToUpper())</span><p></div>
     <div>
@@ -22,35 +25,35 @@
                 <tbody>
                     @foreach (EmployeeVaccineJunction evj in Model)
                     {
-                    <tr class="text-center">
-                        <td scope="row">@(i++)</td>
-                        <td>@evj.Vaccine.VaccineName</td>
-                        <td>@evj.DateFirstComponent?.ToString("d")</td>
-                        <td>@evj.DateSecondComponent?.ToString("d")</td>
-                        <td>
-                            <div class="button-control">
-                                <div class="buttons-inline">
-                                    <form asp-action="UpdateEmployeeVaccineJunction" method="get">
-                                        <input type="hidden" name="Id" value="@evj.Id" />
-                                        <input type="hidden" name="EmployeeId" value="@evj.EmployeeId" />
-                                        <button type="submit" class="btn btn-outline-primary">
-                                            Редактировать
-                                        </button>
-                                    </form>
-                                </div>
-                                <div class="buttons-inline">
-                                    <form asp-action="DeleteEmployeeVaccineJunction" method="post">
-                                        <input type="hidden" name="Id" value="@evj.Id" />
-                                        <input type="hidden" name="EmployeeId" value="@evj.EmployeeId" />
-                                        <button type="submit" class="btn btn-outline-danger">
-                                            Удалить
-                                        </button>
-                                    </form>
-                                </div>
+                        <tr class="text-center">
+                            <td scope="row">@(i++)</td>
+                            <td>@evj.Vaccine.VaccineName</td>
+                            <td>@evj.DateFirstComponent?.ToString("d")</td>
+                            <td>@evj.DateSecondComponent?.ToString("d")</td>
+                            <td>
+                                <div class="button-control">
+                                    <div class="buttons-inline">
+                                        <form asp-action="UpdateEmployeeVaccineJunction" method="get">
+                                            <input type="hidden" name="Id" value="@evj.Id" />
+                                            <input type="hidden" name="EmployeeId" value="@evj.EmployeeId" />
+                                            <button type="submit" class="btn btn-outline-primary">
+                                                Редактировать
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="buttons-inline">
+                                        <form asp-action="DeleteEmployeeVaccineJunction" method="post">
+                                            <input type="hidden" name="Id" value="@evj.Id" />
+                                            <input type="hidden" name="EmployeeId" value="@evj.EmployeeId" />
+                                            <button type="submit" class="btn btn-outline-danger">
+                                                Удалить
+                                            </button>
+                                        </form>
+                                    </div>
 
-                            </div>
-                        </td>
-                    </tr>
+                                </div>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>
@@ -65,6 +68,10 @@
         <a asp-action="UpdateEmployeeVaccineJunction" asp-route-EmployeeId="@ViewBag.Employee.Id"
            class="btn btn-outline-primary">Создать новый курс вакцинации</a>
     </div>
+    <a class="btn btn-secondary" asp-action="BackToHomeIndex"
+       asp-route-returnUrl="@UrlExtensions.ReturnUrlFromSession(ViewContext.HttpContext)">Вернуться на главную</a>
 </div>
+
+
 
 

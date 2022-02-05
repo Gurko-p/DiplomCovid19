@@ -6,7 +6,7 @@
 
 <div class="my-own-container">
     <div class="info-employee-line">
-            @(Model.Id == 0 ? "Добавление нового курса вакцинации" : "Редактирование пройденного курса вакцинации") <span class='emp-name'>@(ViewBag.Employee?.FIO ?? "<none>")</span>
+        @(Model.Id == 0 ? "Добавление нового курса вакцинации" : "Редактирование пройденного курса вакцинации") <span class='emp-name'>@(ViewBag.Employee?.FIO ?? "<none>")</span>
     </div>
     <div class="my-own-container-mid">
         <form asp-action="UpdateEmployeeVaccineJunction" method="post">
@@ -43,6 +43,9 @@
             </div>
         </form>
     </div>
+    <a class="btn btn-secondary" asp-action="BackToHomeIndex"
+       asp-route-returnUrl="@UrlExtensions.ReturnUrlFromSession(ViewContext.HttpContext)">Вернуться на главную</a>
 </div>
+
 
 
