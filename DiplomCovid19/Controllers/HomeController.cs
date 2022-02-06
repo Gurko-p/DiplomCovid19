@@ -28,14 +28,21 @@ namespace DiplomCovid19.Controllers
             string returnUrl = UrlExtensions.PathAndQuery(HttpContext.Request);
             HttpContext.Session.SetString("returnUrl", returnUrl);
 
-            ViewBag.EmployeeFiterModel = new EmployeeFiterModel 
-            { 
-                 FIO = fio,
-                 VaccineId = vaccineId,
-                 GotFirstComponent = got1comp,
-                 GotFullCourse = gotFullCourse
+            ViewBag.EmployeeFiterModel = new EmployeeFiterModel
+            {
+                FIO = fio,
+                VaccineId = vaccineId,
+                GotFirstComponent = got1comp,
+                GotFullCourse = gotFullCourse
             };
-
+            //if (fio != null || vaccineId != 0 || got1comp != false || gotFullCourse != false)
+            //{
+            //    ViewBag.Visible = "filter-container-none";
+            //}
+            //else
+            //{
+            //    ViewBag.Visible = "filter-container-block";
+            //}
             IEnumerable<Employee> employees = repository.Employees
                 .Include(e => e.Subdivision)
                 .Include(e => e.Rank)
@@ -74,6 +81,68 @@ namespace DiplomCovid19.Controllers
             }
             return View(empFiltered?.Distinct().ToList());
         }
+
+        //[HttpPost]
+        //[ActionName("Index")]
+        //public IActionResult FilteredIndex(string fio = null, int vaccineId = 0, bool got1comp = false, bool gotFullCourse = false)
+        //{
+        //    ViewBag.Vaccines = context.Set<Vaccine>();
+
+        //    string returnUrl = null;
+        //    //string name = HttpContext.Request.Form["fio"];
+        //    //string vacId = HttpContext.Request.Form["vaccineId"];
+        //    //string g1c = HttpContext.Request.Form["got1comp"];
+        //    //string gfc = HttpContext.Request.Form["gotFullCourse"];
+        //    returnUrl = $"/Home/Index?fio={fio}&vaccineId={vaccineId}&got1comp={got1comp}&gotFullCourse={gotFullCourse}";
+
+        //    HttpContext.Session.SetString("returnUrl", returnUrl);
+
+        //    ViewBag.EmployeeFiterModel = new EmployeeFiterModel
+        //    {
+        //        FIO = fio,
+        //        VaccineId = Convert.ToInt32(vaccineId),
+        //        GotFirstComponent = Convert.ToBoolean(got1comp),
+        //        GotFullCourse = Convert.ToBoolean(gotFullCourse)
+        //    };
+
+        //    IEnumerable<Employee> employees = repository.Employees
+        //        .Include(e => e.Subdivision)
+        //        .Include(e => e.Rank)
+        //        .Include(e => e.Position)
+        //        .Where(e => e.FIO.Contains(fio ?? ""))
+        //        .ToList();
+
+        //    IEnumerable<Employee> empFiltered = null;
+        //    if (got1comp != false && gotFullCourse == false)
+        //    {
+        //        IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+        //        empFiltered = from emp in employees
+        //                      join evj in empVacJunc on emp.Id equals evj.EmployeeId
+        //                      where evj.DateFirstComponent.HasValue
+        //                      select emp;
+        //    }
+        //    else if (gotFullCourse != false)
+        //    {
+        //        IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+        //        empFiltered = from emp in employees
+        //                      join evj in empVacJunc on emp.Id equals evj.EmployeeId
+        //                      where evj.DateSecondComponent.HasValue
+        //                      select emp;
+        //    }
+        //    else if (vaccineId != 0)
+        //    {
+        //        IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+        //        empFiltered = from emp in employees
+        //                      join evj in empVacJunc on emp.Id equals evj.EmployeeId
+        //                      where evj.VaccineId == vaccineId
+        //                      select emp;
+        //    }
+        //    else
+        //    {
+        //        empFiltered = employees;
+        //    }
+        //    return View("IndexTablePartial", empFiltered?.Distinct().ToList());
+        //}
 
         public IActionResult ClearFilters()
         {

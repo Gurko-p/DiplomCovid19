@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
     <title>Covid19</title>
     @Html.Partial("CssPartial")
 </head>
@@ -13,5 +13,24 @@
         </div>
     </div>
     @Html.Partial("ScriptsPartial")
+<script type="text/javascript">
+    $(function () {
+        $('#slideDown').click(function () {
+            $('#slideUp').slideToggle(1000);
+        });
+    });
+
+    //$('#searchSubmit').click(function (e) {
+    //    e.preventDefault();
+    //    $('#results').removeData();
+    //    var fio = $('#searchFIO').val();
+    //    var vaccineId = $('#searchVaccineId').val();
+    //    var got1comp = $('#got1compId').val();
+    //    var gotFullCourse = $('#gotFullCourseId').val();
+    //    $.post("Home/Index", { fio: fio, vaccineId: vaccineId, got1comp: got1comp, gotFullCourse: gotFullCourse }, function (data) {
+    //        $('#results').html(data)
+    //    });
+    //});
+</script>
 </body>
 </html >

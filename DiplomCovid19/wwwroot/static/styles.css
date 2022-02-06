@@ -133,3 +133,36 @@ table > tbody tr:hover {
     min-width: 70px;
 }
 
+.filter-container-none{
+    display: none;
+}
+
+.filter-container-block {
+    display: block;
+}
+
+.filter{
+    margin-bottom: 1em;
+}
+
+
+.control-inline {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkbox-group > div{
+    padding-bottom: .5em;
+}
+
+.checkbox-group > div:last-child{
+    margin-bottom: .5em;
+}
+
+.own-checkbox{
+    margin-left: .5em;
+}
+
+.td-control{
+    min-width: 300px;
+}

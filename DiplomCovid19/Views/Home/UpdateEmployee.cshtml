@@ -31,7 +31,7 @@
                 <select class="form-control" asp-for="SubdivisionId">
                     @if (Model.SubdivisionId == null)
                     {
-                        <option disabled selected value="0">-- Выберете подразделение --</option>
+                        <option disabled selected value="0">-- Выберите подразделение --</option>
                     }
                     @foreach (Subdivision s in ViewBag.Subdivisions)
                     {
@@ -45,7 +45,7 @@
                 <select class="form-control" asp-for="RankId">
                     @if (Model.RankId == null)
                     {
-                        <option disabled selected value="0">-- Выберете звание --</option>
+                        <option disabled selected value="0">-- Выберите звание --</option>
                     }
                     @foreach (Rank r in ViewBag.Ranks)
                     {
@@ -59,7 +59,7 @@
                 <select class="form-control" asp-for="PositionId">
                     @if (Model.PositionId == null)
                     {
-                        <option disabled selected value="0">-- Выберете должность --</option>
+                        <option disabled selected value="0">-- Выберите должность --</option>
                     }
                     @foreach (Position p in ViewBag.Positions)
                     {

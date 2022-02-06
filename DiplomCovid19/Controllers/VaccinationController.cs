@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DiplomCovid19.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Policy;
+using Flurl;
 
 namespace DiplomCovid19.Controllers
 {
@@ -56,8 +59,7 @@ namespace DiplomCovid19.Controllers
         }
 
         public IActionResult BackToHomeIndex(string returnUrl)
-        {   
-
+        {
             return Redirect($"~{returnUrl}");
         }
     }

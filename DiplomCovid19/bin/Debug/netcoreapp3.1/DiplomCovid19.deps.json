@@ -31,6 +31,7 @@
     ".NETCoreApp,Version=v3.1": {
       "DiplomCovid19/1.0.0": {
         "dependencies": {
+          "Flurl": "3.0.4",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.11",
           "Microsoft.EntityFrameworkCore": "5.0.11",
           "Microsoft.EntityFrameworkCore.Design": "5.0.11",
@@ -307,6 +308,17 @@
         },
         "compile": {
           "DiplomCovid19.dll": {}
+        }
+      },
+      "Flurl/3.0.4": {
+        "runtime": {
+          "lib/netstandard2.0/Flurl.dll": {
+            "assemblyVersion": "3.0.4.0",
+            "fileVersion": "3.0.4.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Flurl.dll": {}
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -3064,6 +3076,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Flurl/3.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2bgCzOs3TGwRkfcijCiH+7o9Pz4pyVnt4yyLX2vD3wlMSekpmGhqe2zA4988qSMmPa6AqeekX13CY4FvsjsDJQ==",
+      "path": "flurl/3.0.4",
+      "hashPath": "flurl.3.0.4.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",

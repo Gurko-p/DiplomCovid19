@@ -266,3 +266,5 @@ D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Shared
 D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ScriptsPartial.cshtml.g.cs
 D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Account\_LayoutLogin.cshtml.g.cs
 D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Home\FilterPartial.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\obj\Debug\netcoreapp3.1\Razor\Views\Home\IndexTablePartial.cshtml.g.cs
+D:\diplom\DiplomCovid19\DiplomCovid19\bin\Debug\netcoreapp3.1\Flurl.dll
