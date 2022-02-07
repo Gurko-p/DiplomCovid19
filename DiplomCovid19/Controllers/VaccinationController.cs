@@ -60,7 +60,7 @@ namespace DiplomCovid19.Controllers
 
         public IActionResult BackToHomeIndex(string returnUrl)
         {
-            return Redirect("~/Home/Index?fio=Левенко&vaccineId=0&got1comp=True&gotFullCourse=False");
+            return Redirect($"~{returnUrl}");
         }
     }
 }

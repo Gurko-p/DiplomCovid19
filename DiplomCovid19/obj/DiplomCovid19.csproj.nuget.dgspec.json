@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Study\\Diplom\\DiplomCovid19\\DiplomCovid19\\DiplomCovid19.csproj": {}
+    "D:\\diplom\\DiplomCovid19\\DiplomCovid19\\DiplomCovid19.csproj": {}
   },
   "projects": {
-    "D:\\Study\\Diplom\\DiplomCovid19\\DiplomCovid19\\DiplomCovid19.csproj": {
+    "D:\\diplom\\DiplomCovid19\\DiplomCovid19\\DiplomCovid19.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\Diplom\\DiplomCovid19\\DiplomCovid19\\DiplomCovid19.csproj",
+        "projectUniqueName": "D:\\diplom\\DiplomCovid19\\DiplomCovid19\\DiplomCovid19.csproj",
         "projectName": "DiplomCovid19",
-        "projectPath": "D:\\Study\\Diplom\\DiplomCovid19\\DiplomCovid19\\DiplomCovid19.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\Diplom\\DiplomCovid19\\DiplomCovid19\\obj\\",
+        "projectPath": "D:\\diplom\\DiplomCovid19\\DiplomCovid19\\DiplomCovid19.csproj",
+        "packagesPath": "C:\\Users\\Pavel\\.nuget\\packages\\",
+        "outputPath": "D:\\diplom\\DiplomCovid19\\DiplomCovid19\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Pavel\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -81,6 +82,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.17, 3.1.17]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -89,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

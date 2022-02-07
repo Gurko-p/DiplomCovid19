@@ -6,7 +6,7 @@
 <table class="table table-bordered">
     <thead>
         <tr class="text-center">
-            <th scope="col">№ п/п</th>
+            <th scope="col">№</th>
             <th scope="col">Фамилия, имя, отчество</th>
             <th scope="col">Подразделение</th>
             <th scope="col">Звание</th>
@@ -39,8 +39,7 @@
                         <a class="btn btn-outline-success"
                            asp-controller="Vaccination"
                            asp-action="VaccinationCourses"
-                           asp-route-id="@e.Id"
-                           method="post">
+                           asp-route-id="@e.Id">
                             Курсы вакцинации
                         </a>
                     </form>

@@ -23,61 +23,88 @@ namespace DiplomCovid19.Controllers
             context = ctx;
         }
         //[Authorize]
-        public JsonResult Index(/*string fio = null, int vaccineId = 0, bool got1comp = false, bool gotFullCourse = false*/)
+        public IActionResult Index(string fio = null, int vaccineId = 0, bool got1comp = false, bool gotFullCourse = false)
         {
-            //ViewBag.Vaccines = context.Set<Vaccine>();
-            //string returnUrl = UrlExtensions.PathAndQuery(HttpContext.Request);
-            //HttpContext.Session.SetString("returnUrl", returnUrl);
+            ViewBag.Vaccines = context.Set<Vaccine>();
+            string returnUrl = UrlExtensions.PathAndQuery(HttpContext.Request);
+            HttpContext.Session.SetString("returnUrl", returnUrl);
 
-            //ViewBag.EmployeeFiterModel = new EmployeeFiterModel
-            //{
-            //    FIO = fio,
-            //    VaccineId = vaccineId,
-            //    GotFirstComponent = got1comp,
-            //    GotFullCourse = gotFullCourse
-            //};
+            ViewBag.EmployeeFiterModel = new EmployeeFiterModel
+            {
+                FIO = fio,
+                VaccineId = vaccineId,
+                GotFirstComponent = got1comp,
+                GotFullCourse = gotFullCourse
+            };
+
+
+            IEnumerable<Employee> employees = repository.Employees
+                .Include(e => e.Subdivision)
+                .Include(e => e.Rank)
+                .Include(e => e.Position)
+                .Where(e => e.FIO.Contains(fio ?? ""))
+                .ToList();
+
+            IEnumerable<Employee> empFiltered = null;
+            if (got1comp != false && gotFullCourse == false)
+            {
+                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+                empFiltered = from emp in employees
+                              join evj in empVacJunc on emp.Id equals evj.EmployeeId
+                              where evj.DateFirstComponent.HasValue
+                              select emp;
+            }
+            else if (gotFullCourse != false)
+            {
+                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+                empFiltered = from emp in employees
+                              join evj in empVacJunc on emp.Id equals evj.EmployeeId
+                              where evj.DateSecondComponent.HasValue
+                              select emp;
+            }
+            else if (vaccineId != 0)
+            {
+                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+                empFiltered = from emp in employees
+                              join evj in empVacJunc on emp.Id equals evj.EmployeeId
+                              where evj.VaccineId == vaccineId
+                              select emp;
+            }
+            else
+            {
+                empFiltered = employees;
+            }
+
+            return View(empFiltered?.Distinct().ToList());
+        }
+
+
+
+        public JsonResult filterEmployees(string fio = null)
+        {
             var employees = context.Employees
-                    .Include(s => s.Subdivision)
-                    .Select(s => new { 
+                .Include(e => e.Subdivision)
+                .Include(e => e.Rank)
+                .Include(e => e.Position)
+                .Where(e => e.FIO.Contains(fio ?? ""))
+                    .Select(s => new
+                    {
                         Id = s.Id,
                         FIO = s.FIO,
+                        CountCourseVaccination = s.CountCourseVaccination,
                         Subdivision = new
                         {
-                            id = s.Subdivision.Id,
-                            name = s.Subdivision.SubdivisionName
+                            SubdivisionName = s.Subdivision.SubdivisionName
+                        },
+                        Rank = new 
+                        { 
+                            RankName = s.Rank.RankName
+                        },
+                        Position = new
+                        {
+                            PositionName = s.Position.PositionName
                         }
                     });
-
-            //IEnumerable<Employee> empFiltered = null;
-            //if (got1comp != false && gotFullCourse == false)
-            //{
-            //    IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
-            //    empFiltered = from emp in employees
-            //                  join evj in empVacJunc on emp.Id equals evj.EmployeeId
-            //                  where evj.DateFirstComponent.HasValue
-            //                  select emp;
-            //}
-            //else if (gotFullCourse != false)
-            //{
-            //    IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
-            //    empFiltered = from emp in employees
-            //                  join evj in empVacJunc on emp.Id equals evj.EmployeeId
-            //                  where evj.DateSecondComponent.HasValue
-            //                  select emp;
-            //}
-            //else if (vaccineId != 0)
-            //{
-            //    IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
-            //    empFiltered = from emp in employees
-            //                  join evj in empVacJunc on emp.Id equals evj.EmployeeId
-            //                  where evj.VaccineId == vaccineId
-            //                  select emp;
-            //}
-            //else
-            //{
-            //    empFiltered = employees;
-            //}
-
             return Json(employees);
         }
 

@@ -1,4 +1,4 @@
-﻿@*@model IEnumerable<Employee>
+﻿@model IEnumerable<Employee>
 
     @{
         Layout = "_Layout";
@@ -17,45 +17,50 @@
     </div>
 
     <div class="filter">
-        @Html.Partial("FilterPartial", Model)
+        @Html.Partial("FilterPartial")
     </div>
 
     <div id="results">
         @Html.Partial("IndexTablePartial", Model)
-    </div>*@
+    </div>
 
-@{
-    Layout = "_Layout";
-}
-<div id="results">ffffffffffffffffffffffffffffffffff</div>
-
-<script type="text/javascript">
-    //$(function () {
-    //    $('#slideDown').click(function () {
-    //        $('#slideUp').slideToggle(1000);
-    //    });
-    //});
-
-    //$('#searchSubmit').click(function (e) {
-    //    e.preventDefault();
-    //    $('#results').removeData();
-    //    var fio = $('#searchFIO').val();
-    //    var vaccineId = $('#searchVaccineId').val();
-    //    var got1comp = $('#got1compId').prop('checked');
-    //    var gotFullCourse = $('#gotFullCourseId').prop('checked');
-    //    $.get("Home/Index", { fio: fio, vaccineId: vaccineId, got1comp: got1comp, gotFullCourse: gotFullCourse }, function (data) {
-    //        $('#results').html(data)
-    //    });
-    //});
-
-    $(document).ready(function (e) {
-        e.preventDefault();
-        $('#results').removeData();
-        $.get("Home/Index", { fio: fio, vaccineId: vaccineId, got1comp: got1comp, gotFullCourse: gotFullCourse }, function (data) {
-
-            $('#results').html(data)
+    <script type="text/javascript">
+        $('#slideDown').click(function () {
+            $('#slideUp').slideToggle(1000);
         });
-</script>
+
+        $('#searchFIO').keyup(function (e) {
+            e.preventDefault();
+            $('.table tbody').empty();
+            $.get("/Home/filterEmployees", { fio: $('#searchFIO').val() }, function (data) {
+                console.log(data);
+                fillTable(data);
+            });
+        });
+
+        function fillTable(data) {
+            for (var i = 0; i < data.length; i++) {
+                $('.table tbody').append(`<tr class="text-center"><td>${i + 1}</td>
+                                             <td><a href="/Home/UpdateEmployee?key=${data[i].id}">${data[i].fio}</a></td>
+                                                 <td>${data[i].subdivision.subdivisionName}</td>
+                                                 <td>${data[i].rank.rankName}</td>
+                                                 <td>${data[i].position.positionName}</td>
+                                                 <td>${data[i].countCourseVaccination}</td>
+                                                 <td class="td-control">
+                                                    <form asp-action="DeleteEmployee" method="post">
+                                                        <input type="hidden" name="Id" value="${data[i].id}" />
+                                                        <button type="submit" class="btn btn-outline-danger">
+                                                            Удалить
+                                                        </button>
+                                                        <a class="btn btn-outline-success"
+                                                           href="/Vaccination/VaccinationCourses?id=${data[i].id}">
+                                                                Курсы вакцинации
+                                                            </a>
+                                                    </form></td>
+                                                </tr>`);
+            }
+        };
+    </script>
 
 
 

@@ -1,18 +1,204 @@
-﻿@model Dictionary<string, object>
+﻿@*@model Covid19MegaProject.Models.IndexFilterModel
 
 @{
-    Layout = "_Layout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Список сотрудников";
 }
 
-    <div class="bg-primary m-1 p-1 text-white"><h4>User Details</h4></div>
+<h2>Список сотрудников подразделения: "@ViewBag.Sub"</h2>
 
-    <table class="table table-sm table-bordered m-1 p-1">
-        @foreach (var kvp in Model) {
-        <tr><th>@kvp.Key</th><td>@kvp.Value</td></tr>
-    }
-    </table>
+<p>
+    @Html.ActionLink("Добавить нового сотрудника", "Create")
+</p>*@
 
-    @if (User?.Identity?.IsAuthenticated ?? false) {
-    <a asp-controller="Account" asp-action="Logout"
-       class="btn btn-danger">Logout</a>
-}
+@*@using (Ajax.BeginForm("JsonSearch", new AjaxOptions
+    {
+        OnKeyPress = "OnSuccess",
+        LoadingElementId = "loading",
+        LoadingElementDuration = 1000
+    }))
+    {*@
+
+
+
+@*<input type="submit" value="Поиск" />
+    }*@
+@*<img id="loading" src="@Url.Content("~/Images/Loading.gif")" style="display:none; width: 20px;" />*@
+
+
+@*<input type="text" name="name" id="search" placeholder="Поиск" class="form-control" />
+<br />
+<select id="subdivisionName" class="form-control">
+    <option value="0" selected="selected">------------</option>
+</select>
+<br />
+<input type="button" name="Clear" value="Очистить фильтры" id="clearFilters" />
+<br />
+<br />*@
+
+@*<table class="table">
+        <tr>
+            <th>Подразделение</th>
+            <th>Ф.И.О</th>
+            <th>Дата первой вакцинации"</th>
+            <th>Дата второй вакцинации</th>
+            <th>Желает вакцинироваться</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Employees)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subdivision.SubdivisionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FIO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstVaccination)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecondVaccination)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WishesToVaccinate)
+                </td>
+                <td>
+                    @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>*@
+@*<div id="target"></div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+<script type="text/javascript">
+    $('#search').keyup(function () {
+        $.get("JsonSearch", { name: $('#search').val()}, function(data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].WishesToVaccinate == true) {
+                    data[i].WishesToVaccinate = "checked";
+                }
+                else {
+                    data[i].WishesToVaccinate = "";
+                }
+                if (data[i].FirstVaccination == null) {
+                    data[i].FirstVaccination = "--";
+                }
+                if (data[i].SecondVaccination == null) {
+                    data[i].SecondVaccination = "--";
+                }
+            }
+            var target = $('#target');
+            $('.table').remove();
+            target.empty();
+            target.append('<table class="table table-bordered table-hover"><thead><th>№</th><th>Подразделение</th><th>Ф.И.О.</th><th>1 вакцинация</th><th>2 вакцинация</th><th>Желает вакцинироваться</th><th>Действие</th></thead><tbody></tbody></table>');
+            for (var i = 0; i < data.length; i++) {
+
+                $('.table tbody').append(`(<tr><td>${i + 1}</td>
+                                     <td>${data[i].Subdivision}</td>
+                                     <td>${data[i].FIO}</td>
+                                     <td>${data[i].FirstVaccination}</td>
+                                     <td>${data[i].SecondVaccination}</td>
+                                     <td><input type="checkbox" ${data[i].WishesToVaccinate} /></td>
+                                     <td><a href="/Home/Delete/${data[i].Id}">Удалить |</a> <a href="/Home/Edit/${data[i].Id}"> Редактировать</a></td>
+                                </tr>)`);
+            }
+        });
+    });
+
+    $('document').ready(function () {
+        $.get("JsonSearch", { name: "" }, function (data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].WishesToVaccinate == true) {
+                    data[i].WishesToVaccinate = "checked";
+                }
+                else {
+                    data[i].WishesToVaccinate = "";
+                }
+                if (data[i].FirstVaccination == null) {
+                    data[i].FirstVaccination = "--";
+                }
+                if (data[i].SecondVaccination == null) {
+                    data[i].SecondVaccination = "--";
+                }
+            }
+            var target = $('#target');
+            $('.table').remove();
+            target.empty();
+            target.append('<table class="table table-bordered table-hover"><thead><th>№</th><th>Подразделение</th><th>Ф.И.О.</th><th>1 вакцинация</th><th>2 вакцинация</th><th>Желает вакцинироваться</th><th>Действие</th></thead><tbody></tbody></table>');
+            for (var i = 0; i < data.length; i++) {
+                $('.table tbody').append(`(<tr><td>${i + 1}</td>
+                                     <td>${data[i].Subdivision}</td>
+                                     <td>${data[i].FIO}</td>
+                                     <td>${data[i].FirstVaccination}</td>
+                                     <td>${data[i].SecondVaccination}</td>
+                                     <td><input type="checkbox" ${data[i].WishesToVaccinate} /></td>
+                                     <td><a href="/Home/Delete/${data[i].Id}">Удалить |</a> <a href="/Home/Edit/${data[i].Id}"> Редактировать</a></td>
+                                </tr>)`);
+            }
+        });
+    });
+
+    $('document').ready(function () {
+        $.get("JsonFillSelect", { name: "" }, function (data) {
+            console.log(data);
+            var selectOpt = $('#subdivisionName');
+            for (var i = 0; i < data.length; i++) {
+                selectOpt.append(`<option value=${i + 1}>${data[i].SubdivisionName}</option>`);
+            }
+        });
+    });
+
+    $('#subdivisionName').change(function () {
+        if ($('#subdivisionName').val() == 0) {
+            location.reload();
+        }
+        else
+        {
+            $.get("FilterSubdivision", { subdivisionId: $('#subdivisionName').val() }, function (data) {
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].WishesToVaccinate == true) {
+                        data[i].WishesToVaccinate = "checked";
+                    }
+                    else {
+                        data[i].WishesToVaccinate = "";
+                    }
+                    if (data[i].FirstVaccination == null) {
+                        data[i].FirstVaccination = "--";
+                    }
+                    if (data[i].SecondVaccination == null) {
+                        data[i].SecondVaccination = "--";
+                    }
+                }
+                var target = $('#target');
+                $('.table').remove();
+                target.empty();
+                target.append('<table class="table table-bordered table-hover"><thead><th>№</th><th>Подразделение</th><th>Ф.И.О.</th><th>1 вакцинация</th><th>2 вакцинация</th><th>Желает вакцинироваться</th><th>Действие</th></thead><tbody></tbody></table>');
+                for (var i = 0; i < data.length; i++) {
+
+                    $('.table tbody').append(`(<tr><td>${i + 1}</td>
+                                     <td>${data[i].Subdivision}</td>
+                                     <td>${data[i].FIO}</td>
+                                     <td>${data[i].FirstVaccination}</td>
+                                     <td>${data[i].SecondVaccination}</td>
+                                     <td><input type="checkbox" ${data[i].WishesToVaccinate} /></td>
+                                     <td><a href="/Home/Delete/${data[i].Id}">Удалить |</a> <a href="/Home/Edit/${data[i].Id}"> Редактировать</a></td>
+                                </tr>)`);
+                }
+            });
+        }
+    });
+
+    $('#clearFilters').click(function () {
+        location.reload();
+    });*@
+
+
+@*</script>*@
