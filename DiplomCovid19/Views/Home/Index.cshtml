@@ -1,26 +1,61 @@
-﻿@model IEnumerable<Employee>
+﻿@*@model IEnumerable<Employee>
+
+    @{
+        Layout = "_Layout";
+    }
+    <div class="container">
+        @await Component.InvokeAsync("VaccinationStatistic")
+        <div class="control-inline filter">
+            <div class="own-search button-search">
+                <button class="btn btn-link" id="slideDown">Расширенный поиск</button>
+            </div>
+            <div class="button-add-employee">
+                <a asp-action="UpdateEmployee"
+                   class="btn btn-link">Добавить сотрудника</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter">
+        @Html.Partial("FilterPartial", Model)
+    </div>
+
+    <div id="results">
+        @Html.Partial("IndexTablePartial", Model)
+    </div>*@
 
 @{
     Layout = "_Layout";
 }
-<div class="container">
-    @await Component.InvokeAsync("VaccinationStatistic")
-    <div class="control-inline filter">
-        <div class="own-search button-search">
-            <button class="btn btn-link" id="slideDown">Расширенный поиск</button>
-        </div>
-        <div class="button-add-employee">
-            <a asp-action="UpdateEmployee"
-               class="btn btn-link">Добавить сотрудника</a>
-        </div>
-    </div>
-    
-</div>
+<div id="results">ffffffffffffffffffffffffffffffffff</div>
 
-<div class="filter">
-    @Html.Partial("FilterPartial", Model)
-</div>
+<script type="text/javascript">
+    //$(function () {
+    //    $('#slideDown').click(function () {
+    //        $('#slideUp').slideToggle(1000);
+    //    });
+    //});
 
-<div id="results">
-    @Html.Partial("IndexTablePartial", Model)
-</div>
+    //$('#searchSubmit').click(function (e) {
+    //    e.preventDefault();
+    //    $('#results').removeData();
+    //    var fio = $('#searchFIO').val();
+    //    var vaccineId = $('#searchVaccineId').val();
+    //    var got1comp = $('#got1compId').prop('checked');
+    //    var gotFullCourse = $('#gotFullCourseId').prop('checked');
+    //    $.get("Home/Index", { fio: fio, vaccineId: vaccineId, got1comp: got1comp, gotFullCourse: gotFullCourse }, function (data) {
+    //        $('#results').html(data)
+    //    });
+    //});
+
+    $(document).ready(function (e) {
+        e.preventDefault();
+        $('#results').removeData();
+        $.get("Home/Index", { fio: fio, vaccineId: vaccineId, got1comp: got1comp, gotFullCourse: gotFullCourse }, function (data) {
+
+            $('#results').html(data)
+        });
+</script>
+
+
+

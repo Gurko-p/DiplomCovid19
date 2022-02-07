@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using DiplomCovid19.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
 
 namespace DiplomCovid19
 {
@@ -21,7 +22,8 @@ namespace DiplomCovid19
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(options => options.EnableEndpointRouting = false);
+            services.AddMvc(options => options.EnableEndpointRouting = false)
+                .AddJsonOptions(opt => opt.JsonSerializerOptions.AllowTrailingCommas = true);
             services.AddDbContext<EmployeeContext>(options => options
                 .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<AppIdentityDbContext>(options => options

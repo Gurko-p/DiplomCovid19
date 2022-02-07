@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using DiplomCovid19.Helpers;
 using DiplomCovid19.Models.ViewModels;
+using Newtonsoft.Json;
 
 namespace DiplomCovid19.Controllers
 {
@@ -22,64 +23,62 @@ namespace DiplomCovid19.Controllers
             context = ctx;
         }
         //[Authorize]
-        public IActionResult Index(string fio = null, int vaccineId = 0, bool got1comp = false, bool gotFullCourse = false)
+        public JsonResult Index(/*string fio = null, int vaccineId = 0, bool got1comp = false, bool gotFullCourse = false*/)
         {
-            ViewBag.Vaccines = context.Set<Vaccine>();
-            string returnUrl = UrlExtensions.PathAndQuery(HttpContext.Request);
-            HttpContext.Session.SetString("returnUrl", returnUrl);
+            //ViewBag.Vaccines = context.Set<Vaccine>();
+            //string returnUrl = UrlExtensions.PathAndQuery(HttpContext.Request);
+            //HttpContext.Session.SetString("returnUrl", returnUrl);
 
-            ViewBag.EmployeeFiterModel = new EmployeeFiterModel
-            {
-                FIO = fio,
-                VaccineId = vaccineId,
-                GotFirstComponent = got1comp,
-                GotFullCourse = gotFullCourse
-            };
-            //if (fio != null || vaccineId != 0 || got1comp != false || gotFullCourse != false)
+            //ViewBag.EmployeeFiterModel = new EmployeeFiterModel
             //{
-            //    ViewBag.Visible = "filter-container-none";
+            //    FIO = fio,
+            //    VaccineId = vaccineId,
+            //    GotFirstComponent = got1comp,
+            //    GotFullCourse = gotFullCourse
+            //};
+            var employees = context.Employees
+                    .Include(s => s.Subdivision)
+                    .Select(s => new { 
+                        Id = s.Id,
+                        FIO = s.FIO,
+                        Subdivision = new
+                        {
+                            id = s.Subdivision.Id,
+                            name = s.Subdivision.SubdivisionName
+                        }
+                    });
+
+            //IEnumerable<Employee> empFiltered = null;
+            //if (got1comp != false && gotFullCourse == false)
+            //{
+            //    IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+            //    empFiltered = from emp in employees
+            //                  join evj in empVacJunc on emp.Id equals evj.EmployeeId
+            //                  where evj.DateFirstComponent.HasValue
+            //                  select emp;
+            //}
+            //else if (gotFullCourse != false)
+            //{
+            //    IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+            //    empFiltered = from emp in employees
+            //                  join evj in empVacJunc on emp.Id equals evj.EmployeeId
+            //                  where evj.DateSecondComponent.HasValue
+            //                  select emp;
+            //}
+            //else if (vaccineId != 0)
+            //{
+            //    IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+            //    empFiltered = from emp in employees
+            //                  join evj in empVacJunc on emp.Id equals evj.EmployeeId
+            //                  where evj.VaccineId == vaccineId
+            //                  select emp;
             //}
             //else
             //{
-            //    ViewBag.Visible = "filter-container-block";
+            //    empFiltered = employees;
             //}
-            IEnumerable<Employee> employees = repository.Employees
-                .Include(e => e.Subdivision)
-                .Include(e => e.Rank)
-                .Include(e => e.Position)
-                .Where(e => e.FIO.Contains(fio ?? ""))
-                .ToList();
 
-            IEnumerable<Employee> empFiltered = null;
-            if (got1comp != false && gotFullCourse == false)
-            {
-                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
-                empFiltered = from emp in employees
-                              join evj in empVacJunc on emp.Id equals evj.EmployeeId
-                              where evj.DateFirstComponent.HasValue
-                              select emp;
-            }
-            else if (gotFullCourse != false)
-            {
-                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
-                empFiltered = from emp in employees
-                              join evj in empVacJunc on emp.Id equals evj.EmployeeId
-                              where evj.DateSecondComponent.HasValue
-                              select emp;
-            }
-            else if (vaccineId != 0)
-            {
-                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
-                empFiltered = from emp in employees
-                              join evj in empVacJunc on emp.Id equals evj.EmployeeId
-                              where evj.VaccineId == vaccineId
-                              select emp;
-            }
-            else
-            {
-                empFiltered = employees;
-            }
-            return View(empFiltered?.Distinct().ToList());
+            return Json(employees);
         }
 
         //[HttpPost]
@@ -94,9 +93,9 @@ namespace DiplomCovid19.Controllers
         //    //string g1c = HttpContext.Request.Form["got1comp"];
         //    //string gfc = HttpContext.Request.Form["gotFullCourse"];
         //    returnUrl = $"/Home/Index?fio={fio}&vaccineId={vaccineId}&got1comp={got1comp}&gotFullCourse={gotFullCourse}";
-
+        //    Console.WriteLine(returnUrl);
         //    HttpContext.Session.SetString("returnUrl", returnUrl);
-
+        //    ViewBag.ReturnUrl = HttpContext.Session.GetString("returnUrl");
         //    ViewBag.EmployeeFiterModel = new EmployeeFiterModel
         //    {
         //        FIO = fio,
