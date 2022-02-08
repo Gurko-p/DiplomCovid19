@@ -25,20 +25,27 @@
     </div>
 
     <script type="text/javascript">
+
         $('#slideDown').click(function () {
             $('#slideUp').slideToggle(1000);
         });
 
-        $('#searchFIO').keyup(function (e) {
-            e.preventDefault();
-            $('.table tbody').empty();
-            $.get("/Home/filterEmployees", { fio: $('#searchFIO').val() }, function (data) {
-                console.log(data);
-                fillTable(data);
-            });
+
+        $('#searchFIO').keyup((e) => {
+            let f = $('#searchFIO').val();
+            setTimeout(() => {
+                let arr = [16, 17, 18];
+                if (f == $('#searchFIO').val() && $.inArray(e.keyCode, arr) == -1) {
+                        $.get("/Home/filterEmployees", { fio: $('#searchFIO').val() }, function (data) {
+                            fillTable(data);
+                            console.log("dfsdfsfdsf");
+                        });
+                }
+            }, 1500);
         });
 
         function fillTable(data) {
+            $('.table tbody').empty();
             for (var i = 0; i < data.length; i++) {
                 $('.table tbody').append(`<tr class="text-center"><td>${i + 1}</td>
                                              <td><a href="/Home/UpdateEmployee?key=${data[i].id}">${data[i].fio}</a></td>
