@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace DiplomCovid19.Models.ViewModels
 {
@@ -16,9 +17,18 @@ namespace DiplomCovid19.Models.ViewModels
 
     public class EmployeeFiterModel
     {
+        [RegularExpression(@"[А-я]+", ErrorMessage = "Некорректное имя")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "Длина строки должна быть от 3 до 30 символов")]
         public string FIO { get; set; }
         public int VaccineId { get; set; }
         public bool? GotFirstComponent { get; set; }
         public bool? GotFullCourse { get; set; }
+        public int Flag { get; set; }
+    }
+
+    public class IndexViewModel
+    {
+        public EmployeeFiterModel FiterModel { get; set; }
+        public IEnumerable<Employee> Employees { get; set; }
     }
 }

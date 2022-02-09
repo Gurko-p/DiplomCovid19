@@ -23,20 +23,21 @@ namespace DiplomCovid19.Controllers
             context = ctx;
         }
         //[Authorize]
-        public IActionResult Index(string fio = null, int vaccineId = 0, bool got1comp = false, bool gotFullCourse = false)
+        public IActionResult Index(string fio = null, int vaccineId = 0, bool got1comp = false, bool gotFullCourse = false, int flag = 0)
         {
             ViewBag.Vaccines = context.Set<Vaccine>();
+
             string returnUrl = UrlExtensions.PathAndQuery(HttpContext.Request);
             HttpContext.Session.SetString("returnUrl", returnUrl);
 
-            ViewBag.EmployeeFiterModel = new EmployeeFiterModel
+            EmployeeFiterModel efm = new EmployeeFiterModel
             {
                 FIO = fio,
                 VaccineId = vaccineId,
                 GotFirstComponent = got1comp,
-                GotFullCourse = gotFullCourse
+                GotFullCourse = gotFullCourse,
+                Flag = flag
             };
-
 
             IEnumerable<Employee> employees = repository.Employees
                 .Include(e => e.Subdivision)
@@ -48,7 +49,7 @@ namespace DiplomCovid19.Controllers
             IEnumerable<Employee> empFiltered = null;
             if (got1comp != false && gotFullCourse == false)
             {
-                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions;
                 empFiltered = from emp in employees
                               join evj in empVacJunc on emp.Id equals evj.EmployeeId
                               where evj.DateFirstComponent.HasValue
@@ -56,7 +57,7 @@ namespace DiplomCovid19.Controllers
             }
             else if (gotFullCourse != false)
             {
-                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions;
                 empFiltered = from emp in employees
                               join evj in empVacJunc on emp.Id equals evj.EmployeeId
                               where evj.DateSecondComponent.HasValue
@@ -64,7 +65,7 @@ namespace DiplomCovid19.Controllers
             }
             else if (vaccineId != 0)
             {
-                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions.ToList();
+                IEnumerable<EmployeeVaccineJunction> empVacJunc = context.EmployeeVaccineJunctions;
                 empFiltered = from emp in employees
                               join evj in empVacJunc on emp.Id equals evj.EmployeeId
                               where evj.VaccineId == vaccineId
@@ -74,11 +75,8 @@ namespace DiplomCovid19.Controllers
             {
                 empFiltered = employees;
             }
-
-            return View(empFiltered?.Distinct().ToList());
+            return View(new IndexViewModel { FiterModel = efm, Employees = empFiltered?.Distinct().ToList()});
         }
-
-
 
         public JsonResult filterEmployees(string fio = null)
         {

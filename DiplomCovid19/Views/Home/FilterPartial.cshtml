@@ -1,24 +1,29 @@
-﻿<div id="slideUp" class="my-own-container filter-container-none">
+﻿@model EmployeeFiterModel
+
+<div id="slideUp" class="my-own-container @(Model?.Flag == 0 ? "filter-container-none" : "filter-container-block")">
     <div class="my-own-container-mid">
         <form id="seacrhForm" method="get">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="flag" id="flag" value="0" />
             <div class="form-group">
-                <input type="text" name="fio" class="form-control" placeholder="-- Введите имя --" value="@ViewBag.EmployeeFiterModel.FIO" />
+                <div><span asp-validation-for="FIO" class="text-danger"></span></div>
+                <input asp-for="FIO" class="form-control" placeholder="-- Введите имя --" value="@Model?.FIO" />
             </div>
             <div class="form-group">
                 <select class="form-control" name="vaccineId" id="searchVaccineId">
-                    @if (ViewBag.EmployeeFiterModel?.VaccineId == 0)
+                    @if (Model?.VaccineId == 0)
                     {
-                        <option disabled selected name="vaccineId" value="@ViewBag.EmployeeFiterModel?.VaccineId">-- Выберете вид вакцины --</option>
+                        <option disabled selected name="vaccineId" value="@Model?.VaccineId">-- Выберете вид вакцины --</option>
                     }
                     @foreach (Vaccine v in ViewBag.Vaccines)
                     {
-                        <option selected=@(ViewBag.EmployeeFiterModel?.VaccineId == v.Id) name="vaccineId" value="@v.Id">@v.VaccineName</option>
+                        <option selected=@(Model?.VaccineId == v.Id) name="vaccineId" value="@v.Id">@v.VaccineName</option>
                     }
                 </select>
             </div>
             <div class="checkbox-group">
-                <div class="form-check"><input type="checkbox" name="got1comp" id="got1compId" value="true" checked=@(ViewBag.EmployeeFiterModel?.GotFirstComponent) /><span class="own-checkbox">Получили первый компонент</span></div>
-                <div class="form-check"><input type="checkbox" name="gotFullCourse" value="true" id="gotFullCourseId" checked=@(ViewBag.EmployeeFiterModel?.GotFullCourse) /><span class="own-checkbox">Прошли полный курс вакцинации</span></div>
+                <div class="form-check"><input type="checkbox" name="got1comp" id="got1compId" value="true" checked=@(Model?.GotFirstComponent) /><span class="own-checkbox">Получили первый компонент</span></div>
+                <div class="form-check"><input type="checkbox" name="gotFullCourse" value="true" id="gotFullCourseId" checked=@(Model?.GotFullCourse) /><span class="own-checkbox">Прошли полный курс вакцинации</span></div>
             </div>
 
             <div class="text-center">

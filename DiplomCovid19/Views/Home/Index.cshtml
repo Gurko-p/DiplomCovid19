@@ -1,48 +1,76 @@
-﻿@model IEnumerable<Employee>
+﻿@model IndexViewModel
 
-    @{
-        Layout = "_Layout";
-    }
-    <div class="container">
-        @await Component.InvokeAsync("VaccinationStatistic")
-        <div class="control-inline filter">
-            <div class="own-search button-search">
-                <button class="btn btn-link" id="slideDown">Расширенный поиск</button>
-            </div>
-            <div class="button-add-employee">
-                <a asp-action="UpdateEmployee"
-                   class="btn btn-link">Добавить сотрудника</a>
-            </div>
+@{
+    Layout = "_Layout";
+}
+<div class="container">
+    @await Component.InvokeAsync("VaccinationStatistic")
+    <div class="control-inline filter">
+        <div class="own-search button-search">
+            <button class="btn btn-link" id="slideDown">Расширенный поиск</button>
+        </div>
+        <div class="button-add-employee">
+            <a asp-action="UpdateEmployee"
+               class="btn btn-link">Добавить сотрудника</a>
         </div>
     </div>
+</div>
 
-    <div class="filter">
-        @Html.Partial("FilterPartial")
-    </div>
+<div class="filter">
+    @Html.Partial("FilterPartial", Model.FiterModel)
+</div>
 
-    <div id="results">
-        @Html.Partial("IndexTablePartial", Model)
-    </div>
+<div id="results">
+    @Html.Partial("IndexTablePartial", Model.Employees)
+</div>
 
-    <script type="text/javascript">
+<script type="text/javascript">
 
         $('#slideDown').click(function () {
+            let item = $('#flag').val();
+            let res = item == 0 ? 1 : 0;
+            $('#flag').val(res);
             $('#slideUp').slideToggle(1000);
         });
 
-
+        let i = 0;
         $('#searchFIO').keyup((e) => {
             let f = $('#searchFIO').val();
             setTimeout(() => {
                 let arr = [16, 17, 18];
-                if (f == $('#searchFIO').val() && $.inArray(e.keyCode, arr) == -1) {
-                        $.get("/Home/filterEmployees", { fio: $('#searchFIO').val() }, function (data) {
-                            fillTable(data);
-                            console.log("dfsdfsfdsf");
-                        });
+                if (f == $('#searchFIO').val() && $.inArray(e.keyCode, arr) == -1 && $('#searchFIO').val().length > 1) {
+                    $.get("/Home/filterEmployees", { fio: $('#searchFIO').val() }, function (data) {
+                        fillTable(data);
+                        console.log("1111111");
+                    });
+                } else if (f == $('#searchFIO').val() && $.inArray(e.keyCode, arr) == -1 && $('#searchFIO').val().length == 1){
+                    $.get("/Home/filterEmployees", { fio: $('#searchFIO').val() }, function (data) {
+                        fillTable(data);
+                        console.log("22222");
+                    });
+                }
+                else if (f == $('#searchFIO').val() && $.inArray(e.keyCode, arr) == -1 && $('#searchFIO').val().length == 0 && e.keyCode == 8) {
+                    i++;
+                    let j = 0;
+                    j = i;
+                    setTimeout(() => {
+                        if ($('#searchFIO').val().length == 0 && i == j) {
+                            $.get("/Home/filterEmployees", { fio: $('#searchFIO').val() }, function (data) {
+                                fillTable(data);
+                                console.log("33333");
+                                console.log(i);
+                            });
+                        }
+                        else {
+                            i = 0;
+                            console.log("ppppppp");
+                            console.log(j);
+                        }
+                    }, 1000)
                 }
             }, 1500);
         });
+
 
         function fillTable(data) {
             $('.table tbody').empty();
@@ -67,7 +95,8 @@
                                                 </tr>`);
             }
         };
-    </script>
+</script>
+
 
 
 
