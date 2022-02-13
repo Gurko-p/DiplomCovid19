@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 
 namespace DiplomCovid19.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private IEmployeeRepository repository;
@@ -22,7 +23,7 @@ namespace DiplomCovid19.Controllers
             repository = repo;
             context = ctx;
         }
-        //[Authorize]
+        
         public IActionResult Index(string fio = null, int vaccineId = 0, bool got1comp = false, bool gotFullCourse = false, int flag = 0)
         {
             ViewBag.Vaccines = context.Set<Vaccine>();

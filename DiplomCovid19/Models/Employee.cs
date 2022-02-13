@@ -13,7 +13,6 @@ namespace DiplomCovid19.Models
         [Required(ErrorMessage = "Фамилия, имя, отчество - обязательное поле!")]
         [Display(Name = "Фамилия, имя, отчество")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Длина строки должна быть от 3 до 50 символов")]
-        [RegularExpression(@"^[А-Я][а-я]+\s{1}[А-Я]{1}[а-я]+\s{1}[А-Я]{1}[а-я]+", ErrorMessage = "Некорректное имя")]
         public string FIO { get; set; }
 
         [Required(ErrorMessage = "Значение по умолчанию не допускается!")]

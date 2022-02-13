@@ -17,7 +17,6 @@ namespace DiplomCovid19.Models.ViewModels
 
     public class EmployeeFiterModel
     {
-        [RegularExpression(@"[А-я]+", ErrorMessage = "Некорректное имя")]
         [StringLength(30, MinimumLength = 3, ErrorMessage = "Длина строки должна быть от 3 до 30 символов")]
         public string FIO { get; set; }
         public int VaccineId { get; set; }
