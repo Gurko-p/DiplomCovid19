@@ -72,13 +72,13 @@ namespace DiplomCovid19.Models
             modelBuilder.Entity<Employee>().HasData(
                     new Employee[]
                     {
-                        new Employee{ Id = 1, FIO = "Гурко Павел Михайлович", SubdivisionId = 2, PositionId = 8, RankId = 9 },
-                        new Employee{ Id = 2, FIO = "Левенко Евгений Юрьевич", SubdivisionId = 2, PositionId = 10, RankId = 10 },
-                        new Employee{ Id = 3, FIO = "Гуркский Вадим Михайлович", SubdivisionId = 2, PositionId = 10, RankId = 10 },
-                        new Employee{ Id = 4, FIO = "Гейц Людмила Николаевна", SubdivisionId = 1, PositionId = 11, RankId = 8 },
-                        new Employee{ Id = 5, FIO = "Костян Елена Григорьевна", SubdivisionId = 1, PositionId = 11, RankId = 8 },
-                        new Employee{ Id = 6, FIO = "Бедункевич Марина Александровна", SubdivisionId = 1, PositionId = 12, RankId = 10 },
-                        new Employee{ Id = 7, FIO = "Райкова Екатерина Александровна", SubdivisionId = 3, PositionId = 10, RankId = 10 }
+                        new Employee{ Id = 1, FIO = "Петров П.П.", SubdivisionId = 2, PositionId = 8, RankId = 9 },
+                        new Employee{ Id = 2, FIO = "Иванов И.И.", SubdivisionId = 2, PositionId = 10, RankId = 10 },
+                        new Employee{ Id = 3, FIO = "Семенов С.С.", SubdivisionId = 2, PositionId = 10, RankId = 10 },
+                        new Employee{ Id = 4, FIO = "Федоров Ф.Ф.", SubdivisionId = 1, PositionId = 11, RankId = 8 },
+                        new Employee{ Id = 5, FIO = "Липский В.В.", SubdivisionId = 1, PositionId = 11, RankId = 8 },
+                        new Employee{ Id = 6, FIO = "Артемов К.В.", SubdivisionId = 1, PositionId = 12, RankId = 10 },
+                        new Employee{ Id = 7, FIO = "Степанов С.В.", SubdivisionId = 3, PositionId = 10, RankId = 10 }
                     });
 
             modelBuilder.Entity<EmployeeVaccineJunction>()
